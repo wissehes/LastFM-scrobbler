@@ -15,6 +15,11 @@
 		897A3687298A66850020AA80 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 897A3686298A66850020AA80 /* Alamofire */; };
 		897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A368B298A69AC0020AA80 /* TopArtistsView.swift */; };
 		897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A368E298A6A7E0020AA80 /* TopArtistsResponse.swift */; };
+		898A6A3029B78B3F00EC2C12 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */; };
+		898A6A3229B78BBE00EC2C12 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3129B78BBE00EC2C12 /* Spotify.swift */; };
+		898A6A3529B78E7400EC2C12 /* SearchAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */; };
+		898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */; };
+		898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */; };
 		89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DB298BA637007E3062 /* TopTracksResponse.swift */; };
 		89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DD298BABDC007E3062 /* TopTracksView.swift */; };
 		89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DF298BAC0F007E3062 /* ExternalImage.swift */; };
@@ -46,6 +51,10 @@
 		897A3689298A67D50020AA80 /* Scrobbler-for-Last-fm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Scrobbler-for-Last-fm-Info.plist"; sourceTree = SOURCE_ROOT; };
 		897A368B298A69AC0020AA80 /* TopArtistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsView.swift; sourceTree = "<group>"; };
 		897A368E298A6A7E0020AA80 /* TopArtistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsResponse.swift; sourceTree = "<group>"; };
+		898A6A3129B78BBE00EC2C12 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
+		898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlbumView.swift; sourceTree = "<group>"; };
+		898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAlbumView.swift; sourceTree = "<group>"; };
+		898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblingAPI.swift; sourceTree = "<group>"; };
 		89C837DB298BA637007E3062 /* TopTracksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksResponse.swift; sourceTree = "<group>"; };
 		89C837DD298BABDC007E3062 /* TopTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksView.swift; sourceTree = "<group>"; };
 		89C837DF298BAC0F007E3062 /* ExternalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalImage.swift; sourceTree = "<group>"; };
@@ -70,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898A6A3029B78B3F00EC2C12 /* SpotifyAPI in Frameworks */,
 				897A3687298A66850020AA80 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +110,7 @@
 				89EBB8CE298B085700AAFE7A /* Components */,
 				897A368A298A69A00020AA80 /* Views */,
 				89C837EA298C3BA2007E3062 /* AuthController.swift */,
+				898A6A3129B78BBE00EC2C12 /* Spotify.swift */,
 				897A3673298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift */,
 				897A3675298A65AB0020AA80 /* ContentView.swift */,
 				897A3677298A65AB0020AA80 /* Assets.xcassets */,
@@ -124,6 +135,7 @@
 			children = (
 				897A368D298A6A0A0020AA80 /* Structs */,
 				897A3683298A662C0020AA80 /* LastfmAPI.swift */,
+				898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -131,6 +143,7 @@
 		897A368A298A69A00020AA80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				898A6A3329B78E6600EC2C12 /* Spotify */,
 				89C837F1298C487A007E3062 /* Auth */,
 				89C837F4298D73F6007E3062 /* Stats */,
 				89C837E1298BB505007E3062 /* RecentTracksView.swift */,
@@ -151,6 +164,15 @@
 				89EBB8D3298B09D900AAFE7A /* Shared.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		898A6A3329B78E6600EC2C12 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */,
+				898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */,
+			);
+			path = Spotify;
 			sourceTree = "<group>";
 		};
 		89C837E5298C2196007E3062 /* Stats */ = {
@@ -217,6 +239,7 @@
 			name = "Scrobbler for Last.fm";
 			packageProductDependencies = (
 				897A3686298A66850020AA80 /* Alamofire */,
+				898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */,
 			);
 			productName = "Scrobbler for Last.fm";
 			productReference = 897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */;
@@ -248,6 +271,7 @@
 			mainGroup = 897A3667298A65AB0020AA80;
 			packageReferences = (
 				897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 			);
 			productRefGroup = 897A3671298A65AB0020AA80 /* Products */;
 			projectDirPath = "";
@@ -288,13 +312,17 @@
 				89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */,
 				897A3674298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift in Sources */,
 				89EBB8D0298B086F00AAFE7A /* Rank.swift in Sources */,
+				898A6A3229B78BBE00EC2C12 /* Spotify.swift in Sources */,
 				897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */,
 				89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */,
 				89EBB8D2298B09AE00AAFE7A /* TopAlbumsResponse.swift in Sources */,
+				898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */,
 				89C837F6298D7415007E3062 /* ArtistDetailView.swift in Sources */,
+				898A6A3529B78E7400EC2C12 /* SearchAlbumView.swift in Sources */,
 				89C837EB298C3BA2007E3062 /* AuthController.swift in Sources */,
 				89C837E9298C228D007E3062 /* LovedTracksView.swift in Sources */,
 				89EBB8D4298B09D900AAFE7A /* Shared.swift in Sources */,
+				898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */,
 				89C837F3298C4882007E3062 /* LoginView.swift in Sources */,
 				897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */,
 			);
@@ -510,6 +538,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI#installation";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -517,6 +553,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
+			productName = SpotifyAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
