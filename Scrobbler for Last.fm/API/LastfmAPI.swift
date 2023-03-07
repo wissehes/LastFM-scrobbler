@@ -27,6 +27,7 @@ final class LastfmAPI {
     static let BASE = "https://ws.audioscrobbler.com/2.0/"
     
     static let auth = AuthAPI()
+    static let scrobble = ScrobblingAPI()
     
     static func getParams(user: String? = nil, method: Method, period: Period? = nil) -> Parameters {
         
