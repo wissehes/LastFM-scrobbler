@@ -16,6 +16,7 @@ struct Scrobbler_for_Last_fmApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(authController)
+                .environmentObject(Spotify.shared)
         }.commands {
             CommandGroup(replacing: .appSettings) {
                 Button("Log out") {
