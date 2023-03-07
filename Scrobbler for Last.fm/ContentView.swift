@@ -15,6 +15,8 @@ fileprivate enum Page {
     case recentTracks
     case lovedTracks
     
+    case spotifySearchAlbums
+    
     case empty
 }
 
@@ -69,6 +71,12 @@ struct ContentView: View {
                     Label("Statistics", systemImage: "chart.xyaxis.line")
                 }
                 
+                Section {
+                    NavigationLink(value: Page.spotifySearchAlbums) {
+                        Label("Scrobble from Spotify", systemImage: "magnifyingglass")
+                    }
+                }
+                
                 
             }.symbolRenderingMode(.multicolor)
                 .listStyle(.sidebar)
@@ -86,6 +94,8 @@ struct ContentView: View {
                 RecentTracksView()
             case .lovedTracks:
                 LovedTracksView()
+            case .spotifySearchAlbums:
+                SearchAlbumView()
             case .empty:
                 Text("Hey!")
                     .background(.thinMaterial)
