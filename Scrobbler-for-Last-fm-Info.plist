@@ -6,5 +6,9 @@
 	<string>$(LASTFM_KEY)</string>
 	<key>LASTFM_SECRET</key>
 	<string>$(LASTFM_SECRET)</string>
+	<key>SPOTIFY_SECRET</key>
+	<string>$(SPOTIFY_SECRET)</string>
+	<key>SPOTIFY_ID</key>
+	<string>$(SPOTIFY_ID)</string>
 </dict>
 </plist>
