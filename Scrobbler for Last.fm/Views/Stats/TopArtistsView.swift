@@ -48,7 +48,7 @@ struct TopArtistsView: View {
                 }
                 .task(id: vm.period.rawValue) {
                     await vm.load()
-                }
+                }.contentTransition(.opacity)
         }
     }
 }
