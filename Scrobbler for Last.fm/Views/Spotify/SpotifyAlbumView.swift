@@ -9,6 +9,7 @@ import SwiftUI
 import SpotifyWebAPI
 import Foundation
 import AppKit
+import AlertToast
 
 struct SpotifyAlbumView: View {
     
@@ -20,12 +21,15 @@ struct SpotifyAlbumView: View {
         Group {
             if let album = vm.album {
                 success(album: album)
+                    .navigationTitle(album.name)
             } else {
-                ProgressView()
+                LongProgessView()
+                    .navigationTitle("Loading...")
             }
         }.onAppear {
             vm.load(uri: albumURI)
         }
+        .transition(.opacity)
     }
     
     func success(album: SpotifyWebAPI.Album) -> some View {
@@ -46,14 +50,15 @@ struct SpotifyAlbumView: View {
                     HStack {
                         Button("Scrobble album") {
                             Task {
-                                if let tracks = album.tracks?.items {
-                                    print("scrobbling...")
-                                    try await LastfmAPI.scrobble.scrobbleAlbumTracks(tracks: tracks, album: album)
-                                }
+                                await vm.scrobbleAlbum()
                             }
                         }.help("Scrobble the whole album as if you've just finished listening to it.")
                         
-                        Button("Scrobble selected") {}.disabled(true)
+                        Button("Scrobble selected") {
+                            Task {
+                                await vm.scrobbleSelected()
+                            }
+                        }.disabled(vm.selectedTracks.count == 0)
                         
                         Button("Open on Spotify") {
                             if let uri = album.uri {
@@ -68,9 +73,13 @@ struct SpotifyAlbumView: View {
             }.frame(height: 200)
                 .padding()
             
-            List(album.tracks?.items ?? [], id: \.id) { track in
+            List(album.tracks?.items ?? [], id: \.id, selection: $vm.selectedTracks) { track in
                 trackRowItem(track)
-            }.listStyle(.bordered(alternatesRowBackgrounds: true))
+                    .tag(track)
+            }
+            .listStyle(.bordered(alternatesRowBackgrounds: true))
+        }.toast(isPresenting: $vm.isShowingToast) {
+            AlertToast(type: .complete(.green), title: "Successfully scrobbled \(album.name)")
         }
     }
     
@@ -108,6 +117,8 @@ struct SpotifyAlbumView: View {
 final class SpotifyAlbumViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var album: SpotifyWebAPI.Album?
+    @Published var isShowingToast = false
+    @Published var selectedTracks = Set<SpotifyWebAPI.Track>()
     
     func load(uri: String) {
         Spotify.shared.client.album(uri)
@@ -115,11 +126,43 @@ final class SpotifyAlbumViewModel: ObservableObject {
                 print(completion)
             } receiveValue: { album in
                 DispatchQueue.main.async {
-                    self.album = album
+                    withAnimation {
+                        self.album = album
+                    }
                 }
             }
             .store(in: &Spotify.shared.cancellables)
         
+    }
+    
+    func scrobbleAlbum() async {
+        defer {
+            DispatchQueue.main.async {
+                self.isShowingToast = true
+            }
+        }
+        
+        if let tracks = album?.tracks?.items {
+            print("scrobbling...")
+            do {
+                try await LastfmAPI.scrobble.scrobbleAlbumTracks(tracks: tracks, album: album)
+            } catch { }
+        }
+    }
+    
+    func scrobbleSelected() async {
+        defer {
+            DispatchQueue.main.async {
+                self.isShowingToast = true
+            }
+        }
+        
+        if selectedTracks.count > 0 {
+            print("scrobbling...")
+            do {
+                try await LastfmAPI.scrobble.scrobbleAlbumTracks(tracks: Array(selectedTracks), album: album)
+            } catch { }
+        }
     }
 }
 
