@@ -97,7 +97,6 @@ struct ArtistDetailView: View {
                 }
                 
                 Text(artist.bio.content)
-//                    .font(.)
             }.padding()
         }
     }

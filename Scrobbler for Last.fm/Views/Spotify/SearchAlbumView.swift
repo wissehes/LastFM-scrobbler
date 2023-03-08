@@ -15,9 +15,6 @@ struct SearchAlbumView: View {
         NavigationStack {
             List {
                 ForEach(vm.results, id: \.id) { item in
-//                    NavigationLink(value: item.uri) {
-//                        rowItem(item)
-//                    }
                     NavigationLink {
                         SpotifyAlbumView(albumURI: item.uri ?? "")
                     } label: {
@@ -25,13 +22,12 @@ struct SearchAlbumView: View {
                     }
 
                 }
-            }.listStyle(.bordered(alternatesRowBackgrounds: true))
-                .searchable(text: $vm.searchQuery)
+            }
+            .listStyle(.inset(alternatesRowBackgrounds: !vm.results.isEmpty))
+                .searchable(text: $vm.searchQuery, prompt: "Search albums...")
                 .onSubmit(of: .search) {
                     vm.search()
-                }.onAppear {
-                    vm.search()
-            }
+                }
         }
     }
     
@@ -73,7 +69,7 @@ struct SearchAlbumView: View {
 }
 
 final class SearchAlbumViewModel: ObservableObject {
-    @Published var searchQuery = "Taylor Swift"
+    @Published var searchQuery = ""
     @Published var results: [SpotifyWebAPI.Album] = []
     
     var formatter: DateFormatter
