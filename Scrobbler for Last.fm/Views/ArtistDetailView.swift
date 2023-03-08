@@ -30,6 +30,7 @@ struct ArtistDetailView: View {
             .task {
                 await vm.load(artist)
             }
+            .transition(.opacity)
     }
     
     func artistView(artist: ArtistInfo) -> some View {
@@ -47,33 +48,56 @@ struct ArtistDetailView: View {
                             .font(.system(.title, design: .rounded, weight: .bold))
                         
                         if let listeners = artist.stats.listenersInt {
-                            Text("\(listeners.formatted()) Listeners")
+                            Text("**\(listeners.formatted())** Listeners")
                                 .font(.callout)
                         }
                         
                         if let plays = artist.stats.playcountInt {
-                            Text("\(plays.formatted()) Plays")
+                            Text("**\(plays.formatted())** Total plays")
                                 .font(.callout)
                         }
-                        HStack {
-                            ForEach(artist.tags.tag, id: \.name) { tag in
-                                Text(tag.name)
-                                    .font(.system(.title3, design: .rounded, weight: .heavy))
-                                    .foregroundColor(.white)
-                                    .lineLimit(2)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(Color.pink)
-                                    .clipShape(Capsule())
-                                    .shadow(radius: 5)
+                        
+                        if let myPlays = artist.stats.userplaycountInt {
+                            Text("**\(myPlays.formatted())** Plays by you")
+                                .font(.callout)
+                        }
+                        GroupBox {
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(artist.tags.tag, id: \.name) { tag in
+                                        Pill(text: tag.name, color: .pink)
+                                    }
+                                }
+                                .padding(.horizontal)
+                                .frame(height: 50)
                             }
+                        } label: {
+                            Label("Tags", systemImage: "tag.circle")
+                        }
+                        
+                        GroupBox {
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(artist.similar.artist, id: \.name) { simArtist in
+                                        NavigationLink {
+                                            ArtistDetailView(artist: simArtist)
+                                        } label: {
+                                            Pill(text: simArtist.name, color: .indigo)
+                                        }.buttonStyle(.plain)
+
+                                    }
+                                }.padding(.horizontal)
+                                    .frame(height: 50)
+                            }
+                        } label: {
+                            Label("Similar artists", systemImage: "person.2")
                         }
                         
                     }
                 }
                 
                 Text(artist.bio.content)
+//                    .font(.)
             }.padding()
         }
     }
@@ -87,9 +111,9 @@ final class ArtistDetailViewModel: ObservableObject {
         
         defer {
             DispatchQueue.main.async {
-//                withAnimation {
+                withAnimation {
                     self.isLoading = false
-//                }
+                }
             }
         }
         
