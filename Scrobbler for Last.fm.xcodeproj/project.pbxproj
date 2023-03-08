@@ -23,6 +23,9 @@
 		898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */; };
 		898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */; };
 		898A6A3E29B7E54700EC2C12 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 898A6A3D29B7E54700EC2C12 /* AlertToast */; };
+		899D9A0729B912BB00D6EFB0 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0629B912BB00D6EFB0 /* LoadingView.swift */; };
+		899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */; };
+		899D9A0B29B916F200D6EFB0 /* SwiftUI+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */; };
 		89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DB298BA637007E3062 /* TopTracksResponse.swift */; };
 		89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DD298BABDC007E3062 /* TopTracksView.swift */; };
 		89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DF298BAC0F007E3062 /* ExternalImage.swift */; };
@@ -60,6 +63,9 @@
 		898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlbumView.swift; sourceTree = "<group>"; };
 		898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAlbumView.swift; sourceTree = "<group>"; };
 		898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblingAPI.swift; sourceTree = "<group>"; };
+		899D9A0629B912BB00D6EFB0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Loading.swift"; sourceTree = "<group>"; };
 		89C837DB298BA637007E3062 /* TopTracksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksResponse.swift; sourceTree = "<group>"; };
 		89C837DD298BABDC007E3062 /* TopTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksView.swift; sourceTree = "<group>"; };
 		89C837DF298BAC0F007E3062 /* ExternalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalImage.swift; sourceTree = "<group>"; };
@@ -225,6 +231,9 @@
 				89C837DF298BAC0F007E3062 /* ExternalImage.swift */,
 				8948995529B8B6A400D0EE2B /* LongProgessView.swift */,
 				8948995729B8C00700D0EE2B /* Pill.swift */,
+				899D9A0629B912BB00D6EFB0 /* LoadingView.swift */,
+				899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */,
+				899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -332,8 +341,11 @@
 				898A6A3529B78E7400EC2C12 /* SearchAlbumView.swift in Sources */,
 				89C837EB298C3BA2007E3062 /* AuthController.swift in Sources */,
 				89C837E9298C228D007E3062 /* LovedTracksView.swift in Sources */,
+				899D9A0B29B916F200D6EFB0 /* SwiftUI+Loading.swift in Sources */,
+				899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */,
 				89EBB8D4298B09D900AAFE7A /* Shared.swift in Sources */,
 				898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */,
+				899D9A0729B912BB00D6EFB0 /* LoadingView.swift in Sources */,
 				89C837F3298C4882007E3062 /* LoginView.swift in Sources */,
 				8948995829B8C00700D0EE2B /* Pill.swift in Sources */,
 				897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */,

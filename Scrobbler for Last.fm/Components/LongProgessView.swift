@@ -21,7 +21,9 @@ struct LongProgessView: View {
     func countDown() async {
         try? await Task.sleep(for: .seconds(1))
         DispatchQueue.main.async {
-            self.showProgress = true
+            withAnimation {
+                self.showProgress = true
+            }
         }
     }
 }
