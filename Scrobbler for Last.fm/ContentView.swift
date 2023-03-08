@@ -73,8 +73,10 @@ struct ContentView: View {
                 
                 Section {
                     NavigationLink(value: Page.spotifySearchAlbums) {
-                        Label("Scrobble from Spotify", systemImage: "magnifyingglass")
+                        Label("From Spotify", systemImage: "magnifyingglass")
                     }
+                } header: {
+                    Label("Spotify", systemImage: "music.note")
                 }
                 
                 
