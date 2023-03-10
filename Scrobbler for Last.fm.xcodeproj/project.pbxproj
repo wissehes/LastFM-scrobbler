@@ -25,6 +25,7 @@
 		898A6A3E29B7E54700EC2C12 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 898A6A3D29B7E54700EC2C12 /* AlertToast */; };
 		899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */; };
 		899D9A0B29B916F200D6EFB0 /* SwiftUI+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */; };
+		89B4814229BBE3D100319778 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 89B4814129BBE3D100319778 /* Lottie */; };
 		89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DB298BA637007E3062 /* TopTracksResponse.swift */; };
 		89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DD298BABDC007E3062 /* TopTracksView.swift */; };
 		89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DF298BAC0F007E3062 /* ExternalImage.swift */; };
@@ -91,6 +92,7 @@
 				898A6A3E29B7E54700EC2C12 /* AlertToast in Frameworks */,
 				898A6A3029B78B3F00EC2C12 /* SpotifyAPI in Frameworks */,
 				897A3687298A66850020AA80 /* Alamofire in Frameworks */,
+				89B4814229BBE3D100319778 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +257,7 @@
 				897A3686298A66850020AA80 /* Alamofire */,
 				898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */,
 				898A6A3D29B7E54700EC2C12 /* AlertToast */,
+				89B4814129BBE3D100319778 /* Lottie */,
 			);
 			productName = "Scrobbler for Last.fm";
 			productReference = 897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */;
@@ -288,6 +291,7 @@
 				897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 				898A6A3C29B7E54600EC2C12 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				89B4814029BBE3D000319778 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 897A3671298A65AB0020AA80 /* Products */;
 			projectDirPath = "";
@@ -574,6 +578,14 @@
 				kind = branch;
 			};
 		};
+		89B4814029BBE3D000319778 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm";
+			requirement = {
+				kind = exactVersion;
+				version = 4.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -591,6 +603,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 898A6A3C29B7E54600EC2C12 /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		89B4814129BBE3D100319778 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89B4814029BBE3D000319778 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
