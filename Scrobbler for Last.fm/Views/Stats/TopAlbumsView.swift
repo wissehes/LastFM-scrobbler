@@ -33,7 +33,7 @@ struct TopAlbumsView: View {
     var list: some View {
         List {
             ForEach(vm.data, id: \.id, content: rowItem(_:))
-        }.environment(\.defaultMinListRowHeight, 100)
+        }.environment(\.defaultMinListRowHeight, 110)
     }
     
     func rowItem(_ item: Album) -> some View {
@@ -42,6 +42,7 @@ struct TopAlbumsView: View {
             
             ExternalImage(url: item.image.last?.text)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(radius: 10)
                 .frame(width: 75, height: 75)
                 .padding(5)
             
