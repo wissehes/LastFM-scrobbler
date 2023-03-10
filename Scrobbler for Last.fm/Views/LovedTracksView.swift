@@ -12,14 +12,20 @@ struct LovedTracksView: View {
     @StateObject var vm = LovedTracksViewModel()
     
     var body: some View {
+            list
+            .task {
+                await vm.load()
+            }.loading(vm.isLoading)
+            .navigationTitle("Loved Tracks")
+    }
+    
+    var list: some View {
         List {
             ForEach(Array(zip(vm.data.indices, vm.data)), id: \.1.id) { index, item in
                 itemView(index: index, item: item)
             }
-        }.listStyle(.inset(alternatesRowBackgrounds: true))
-            .task {
-                await vm.load()
-            }.navigationTitle("Loved Tracks")
+        }.environment(\.defaultMinListRowHeight, 70)
+        .listStyle(.inset(alternatesRowBackgrounds: true))
     }
     
     func itemView(index: Int, item: LovedTrack) -> some View {
@@ -29,10 +35,10 @@ struct LovedTracksView: View {
             VStack(alignment: .leading) {
                 Text(item.name)
                     .font(.system(.title, design: .rounded, weight: .bold))
-                    .lineLimit(2)
+                    .lineLimit(1)
                 Text(item.artist)
                     .font(.title2)
-                    .lineLimit(2)
+                    .lineLimit(1)
             }
             
             Spacer()
@@ -57,8 +63,7 @@ struct LovedTracksView: View {
                 Label("View", systemImage: "arrow.up.forward.square")
             }
             .padding(.trailing)
-                
-        }
+        }.frame(height: 60)
 
     }
 }

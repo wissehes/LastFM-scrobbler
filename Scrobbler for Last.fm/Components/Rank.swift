@@ -15,7 +15,7 @@ struct Rank: View {
         Text(rank)
             .font(.system(.title2, design: .rounded))
             .bold()
-            .foregroundColor(.white)
+//            .foregroundColor(.white)
             .scaledToFit()
             .frame(width: 40, height: 40)
             .lineLimit(1)

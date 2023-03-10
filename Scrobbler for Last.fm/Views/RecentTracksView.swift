@@ -18,6 +18,8 @@ struct RecentTracksView: View {
                     itemView(index: index, item: item)
                 }
             }.listStyle(.inset(alternatesRowBackgrounds: true))
+                .environment(\.defaultMinListRowHeight, 65)
+                .loading(vm.isLoading)
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button {
@@ -32,7 +34,9 @@ struct RecentTracksView: View {
                 }
                 .task {
                     await vm.load()
-                }.navigationTitle("Recent Tracks")
+                }
+                .navigationTitle("Recent Tracks")
+                
         }
     }
     
