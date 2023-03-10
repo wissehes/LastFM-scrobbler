@@ -23,9 +23,13 @@
 		898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */; };
 		898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */; };
 		898A6A3E29B7E54700EC2C12 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 898A6A3D29B7E54700EC2C12 /* AlertToast */; };
+		8990661229BBED29009D3CB5 /* SwiftUI+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */; };
 		899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */; };
 		899D9A0B29B916F200D6EFB0 /* SwiftUI+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */; };
 		89B4814229BBE3D100319778 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 89B4814129BBE3D100319778 /* Lottie */; };
+		89B4814429BBE3DF00319778 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4814329BBE3DF00319778 /* LottieView.swift */; };
+		89B4814629BBE49400319778 /* now-playing.json in Resources */ = {isa = PBXBuildFile; fileRef = 89B4814529BBE49400319778 /* now-playing.json */; };
+		89B4814929BBE62D00319778 /* NowPlayingIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4814829BBE62D00319778 /* NowPlayingIcon.swift */; };
 		89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DB298BA637007E3062 /* TopTracksResponse.swift */; };
 		89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DD298BABDC007E3062 /* TopTracksView.swift */; };
 		89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DF298BAC0F007E3062 /* ExternalImage.swift */; };
@@ -63,8 +67,12 @@
 		898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlbumView.swift; sourceTree = "<group>"; };
 		898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAlbumView.swift; sourceTree = "<group>"; };
 		898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblingAPI.swift; sourceTree = "<group>"; };
+		8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Pointer.swift"; sourceTree = "<group>"; };
 		899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Loading.swift"; sourceTree = "<group>"; };
+		89B4814329BBE3DF00319778 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		89B4814529BBE49400319778 /* now-playing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "now-playing.json"; sourceTree = "<group>"; };
+		89B4814829BBE62D00319778 /* NowPlayingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingIcon.swift; sourceTree = "<group>"; };
 		89C837DB298BA637007E3062 /* TopTracksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksResponse.swift; sourceTree = "<group>"; };
 		89C837DD298BABDC007E3062 /* TopTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksView.swift; sourceTree = "<group>"; };
 		89C837DF298BAC0F007E3062 /* ExternalImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalImage.swift; sourceTree = "<group>"; };
@@ -187,6 +195,16 @@
 			path = Spotify;
 			sourceTree = "<group>";
 		};
+		89B4814729BBE62100319778 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				89B4814529BBE49400319778 /* now-playing.json */,
+				89B4814329BBE3DF00319778 /* LottieView.swift */,
+				89B4814829BBE62D00319778 /* NowPlayingIcon.swift */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		89C837E5298C2196007E3062 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,12 +245,14 @@
 		89EBB8CE298B085700AAFE7A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				89B4814729BBE62100319778 /* Lottie */,
 				89EBB8CF298B086F00AAFE7A /* Rank.swift */,
 				89C837DF298BAC0F007E3062 /* ExternalImage.swift */,
 				8948995529B8B6A400D0EE2B /* LongProgessView.swift */,
 				8948995729B8C00700D0EE2B /* Pill.swift */,
 				899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */,
 				899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */,
+				8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -308,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				897A367B298A65AB0020AA80 /* Preview Assets.xcassets in Resources */,
+				89B4814629BBE49400319778 /* now-playing.json in Resources */,
 				897A3678298A65AB0020AA80 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89B4814929BBE62D00319778 /* NowPlayingIcon.swift in Sources */,
 				89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */,
 				89C837F8298D8FD1007E3062 /* ArtistInfoResponse.swift in Sources */,
 				89C837E4298BB5F9007E3062 /* RecentTracksResponse.swift in Sources */,
@@ -331,11 +353,13 @@
 				897A3676298A65AB0020AA80 /* ContentView.swift in Sources */,
 				89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */,
 				897A3674298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift in Sources */,
+				8990661229BBED29009D3CB5 /* SwiftUI+Pointer.swift in Sources */,
 				8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */,
 				89EBB8D0298B086F00AAFE7A /* Rank.swift in Sources */,
 				898A6A3229B78BBE00EC2C12 /* Spotify.swift in Sources */,
 				897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */,
 				89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */,
+				89B4814429BBE3DF00319778 /* LottieView.swift in Sources */,
 				89EBB8D2298B09AE00AAFE7A /* TopAlbumsResponse.swift in Sources */,
 				898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */,
 				89C837F6298D7415007E3062 /* ArtistDetailView.swift in Sources */,

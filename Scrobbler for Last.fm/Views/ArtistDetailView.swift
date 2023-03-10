@@ -76,13 +76,14 @@ struct ArtistDetailView: View {
                         }
                         
                         GroupBox {
-                            ScrollView(.horizontal) {
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ForEach(artist.similar.artist, id: \.name) { simArtist in
                                         NavigationLink {
                                             ArtistDetailView(artist: simArtist)
                                         } label: {
                                             Pill(text: simArtist.name, color: .indigo)
+                                                .pointerOnHover()
                                         }.buttonStyle(.plain)
 
                                     }
