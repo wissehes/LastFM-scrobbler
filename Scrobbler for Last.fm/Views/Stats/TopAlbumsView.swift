@@ -12,32 +12,8 @@ struct TopAlbumsView: View {
     @StateObject var vm = TopAlbumsViewModel()
     
     var body: some View {
-        List {
-            ForEach(vm.data, id: \.id) { item in
-                HStack(alignment: .center) {
-                    Rank(rank: item.attr.rank)
-                    
-                    ExternalImage(url: item.image.last?.text)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(width: 75, height: 75)
-                        .padding(5)
-                    
-                    VStack(alignment: .leading) {
-                        Text(item.name)
-                            .font(.system(.title, design: .rounded, weight: .bold))
-                        Text(item.artist.name)
-                            .font(.title2)
-                        Text(item.scrobbles + " Scrobbles")
-                    }
-                    
-                    Spacer()
-                    
-                    Link(destination: item.url) {
-                        Label("View", systemImage: "arrow.up.forward.square")
-                    }.padding(.trailing)
-                }
-            }
-        }.listStyle(.inset(alternatesRowBackgrounds: true))
+        list
+            .listStyle(.inset(alternatesRowBackgrounds: true))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Picker("Period", selection: $vm.period) {
@@ -48,9 +24,42 @@ struct TopAlbumsView: View {
                     }
                 }
             }
+            .loading(vm.isLoading)
             .task(id: vm.period.rawValue) {
                 await vm.load()
             }
+    }
+    
+    var list: some View {
+        List {
+            ForEach(vm.data, id: \.id, content: rowItem(_:))
+        }.environment(\.defaultMinListRowHeight, 100)
+    }
+    
+    func rowItem(_ item: Album) -> some View {
+        HStack(alignment: .center) {
+            Rank(rank: item.attr.rank)
+            
+            ExternalImage(url: item.image.last?.text)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .frame(width: 75, height: 75)
+                .padding(5)
+            
+            VStack(alignment: .leading) {
+                Text(item.name)
+                    .font(.system(.title, design: .rounded, weight: .bold))
+                    .lineLimit(1)
+                Text(item.artist.name)
+                    .font(.title2)
+                Text(item.scrobbles + " Scrobbles")
+            }
+            
+            Spacer()
+            
+            Link(destination: item.url) {
+                Label("View", systemImage: "arrow.up.forward.square")
+            }.padding(.trailing)
+        }.frame(height: 100)
     }
 }
 

@@ -18,6 +18,7 @@ struct TopTracksView: View {
                     VStack(alignment: .leading) {
                         Text(item.name)
                             .font(.system(.title, design: .rounded, weight: .bold))
+                            .lineLimit(1)
                         Text(item.artist)
                             .font(.title2)
                         Text(item.scrobbles + " Scrobbles")
@@ -30,7 +31,8 @@ struct TopTracksView: View {
                     }.padding(.trailing)
                 }
             }
-        }.listStyle(.inset(alternatesRowBackgrounds: true))
+        }.environment(\.defaultMinListRowHeight, 80)
+            .listStyle(.inset(alternatesRowBackgrounds: true))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Picker("Period", selection: $vm.period) {
@@ -44,20 +46,11 @@ struct TopTracksView: View {
     }
     
     var body: some View {
-            ZStack {
-                listview
-                
-                if vm.isLoading {
-                    ProgressView()
-                        .padding()
-                        .background(.thickMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .frame(width: 100, height: 100)
-                }
+        listview
+            .loading(vm.isLoading)
+            .task(id: vm.period.rawValue) {
+                await vm.load()
             }
-        .task(id: vm.period.rawValue) {
-            await vm.load()
-        }
     }
 }
 

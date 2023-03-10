@@ -13,29 +13,8 @@ struct TopArtistsView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(vm.data, id: \.id) { item in
-                    HStack(alignment: .center) {
-                        Rank(rank: item.attr.rank)
-                        
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.title)
-                            Text(item.scrobbles + " Scrobbles")
-                        }
-                        
-                        Spacer()
-                        
-                        NavigationLink("Info") {
-                            ArtistDetailView(artist: item)
-                        }
-                        
-                        Link(destination: item.url) {
-                            Label("View", systemImage: "arrow.up.forward.square")
-                        }.padding(.trailing)
-                    }
-                }
-            }.listStyle(.inset(alternatesRowBackgrounds: true))
+            list
+            .listStyle(.inset(alternatesRowBackgrounds: true))
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Picker("Period", selection: $vm.period) {
@@ -46,10 +25,39 @@ struct TopArtistsView: View {
                         }
                     }
                 }
+                .loading(vm.isLoading)
                 .task(id: vm.period.rawValue) {
                     await vm.load()
                 }.contentTransition(.opacity)
         }
+    }
+    
+    var list: some View {
+        List {
+            ForEach(vm.data, id: \.id, content: rowItem(_:))
+        }.environment(\.defaultMinListRowHeight, 65)
+    }
+    
+    func rowItem(_ item: TopArtist) -> some View {
+        HStack(alignment: .center) {
+            Rank(rank: item.attr.rank)
+            
+            VStack(alignment: .leading) {
+                Text(item.name)
+                    .font(.system(.title, design: .rounded, weight: .bold))
+                Text(item.scrobbles + " Scrobbles")
+            }
+            
+            Spacer()
+            
+            NavigationLink("Info") {
+                ArtistDetailView(artist: item)
+            }
+            
+            Link(destination: item.url) {
+                Label("View", systemImage: "arrow.up.forward.square")
+            }.padding(.trailing)
+        }//.frame(height: 60)
     }
 }
 
