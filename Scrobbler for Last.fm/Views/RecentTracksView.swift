@@ -14,11 +14,11 @@ struct RecentTracksView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(Array(zip(vm.data.indices, vm.data)), id: \.1.id) { index, item in
-                    itemView(index: index, item: item)
+                ForEach(vm.data, id: \.id) { item in
+                    itemView(item: item)
                 }
             }.listStyle(.inset(alternatesRowBackgrounds: true))
-                .environment(\.defaultMinListRowHeight, 65)
+                .environment(\.defaultMinListRowHeight, 75)
                 .loading(vm.isLoading)
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -36,14 +36,12 @@ struct RecentTracksView: View {
                     await vm.load()
                 }
                 .navigationTitle("Recent Tracks")
-                
+            
         }
     }
     
-    func itemView(index: Int, item: RecentTrack) -> some View {
+    func itemView(item: RecentTrack) -> some View {
         HStack(alignment: .center) {
-            Rank(rank: (index + 1).description)
-
             VStack(alignment: .leading) {
                 Text(item.name)
                     .font(.system(.title, design: .rounded, weight: .bold))
@@ -51,20 +49,18 @@ struct RecentTracksView: View {
                 Text(item.artist)
                     .font(.title2)
                     .lineLimit(1)
-            }
+            }.padding(.leading)
             
             Spacer()
             
             HStack {
-                
                 if item.attr?.nowplaying != nil {
-                    Text("Now playing...")
-                        .font(.subheadline)
-                        .italic()
+                    NowPlayingIcon()
+//                        .padding(10)
                 }
                 
-                if let date = item.actualDate {
-                    Text("Played \(date, style: .relative) Ago")
+                if let relative = item.relativeTime {
+                    Text("Played \(relative)")
                         .font(.subheadline)
                 }
             }
@@ -72,21 +68,25 @@ struct RecentTracksView: View {
             Link(destination: item.url) {
                 Label("View", systemImage: "arrow.up.forward.square")
             }.padding(.trailing)
-        }
+        }.frame(height: 65)
     }
 }
 
 final class RecentTracksViewModel: ObservableObject {
     @Published var data: [RecentTrack] = []
     @Published var isLoading = true
-
+    
     func load() async {
         DispatchQueue.main.async {
-            self.isLoading = true
+            withAnimation {
+                self.isLoading = true
+            }
         }
         defer {
             DispatchQueue.main.async {
-                self.isLoading = false
+                withAnimation {
+                    self.isLoading = false
+                }
             }
         }
         
@@ -106,5 +106,14 @@ struct RecentTracksView_Previews: PreviewProvider {
         NavigationStack {
             RecentTracksView()
         }
+    }
+}
+
+extension RecentTrack {
+    var relativeTime: String? {
+        guard let date = self.actualDate else { return nil }
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: date, relativeTo: .now)
     }
 }
