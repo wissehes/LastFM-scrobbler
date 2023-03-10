@@ -502,7 +502,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Scrobbler for Last.fm/Scrobbler_for_Last_fm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrobbler for Last.fm/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -516,7 +516,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -532,7 +532,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Scrobbler for Last.fm/Scrobbler_for_Last_fm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrobbler for Last.fm/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -546,7 +546,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
