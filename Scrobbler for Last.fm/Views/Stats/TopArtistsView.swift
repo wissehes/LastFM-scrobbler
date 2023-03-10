@@ -40,7 +40,7 @@ struct TopArtistsView: View {
     
     func rowItem(_ item: TopArtist) -> some View {
         HStack(alignment: .center) {
-            Rank(rank: item.attr.rank)
+            Rank(rank: item.attr.rank, emoji: true)
             
             VStack(alignment: .leading) {
                 Text(item.name)
