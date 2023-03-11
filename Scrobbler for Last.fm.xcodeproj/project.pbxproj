@@ -26,6 +26,10 @@
 		8990661229BBED29009D3CB5 /* SwiftUI+Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */; };
 		899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */; };
 		899D9A0B29B916F200D6EFB0 /* SwiftUI+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */; };
+		899FCA0729BCAB200051C13E /* CollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FCA0629BCAB200051C13E /* CollageView.swift */; };
+		899FCA0A29BCAC2C0051C13E /* topalbums.json in Resources */ = {isa = PBXBuildFile; fileRef = 899FCA0929BCAC2C0051C13E /* topalbums.json */; };
+		899FCA0C29BCB58E0051C13E /* CreateCollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FCA0B29BCB58E0051C13E /* CreateCollageView.swift */; };
+		899FCA0E29BCB6550051C13E /* CollageImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FCA0D29BCB6550051C13E /* CollageImage.swift */; };
 		89B4814229BBE3D100319778 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 89B4814129BBE3D100319778 /* Lottie */; };
 		89B4814429BBE3DF00319778 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B4814329BBE3DF00319778 /* LottieView.swift */; };
 		89B4814629BBE49400319778 /* now-playing.json in Resources */ = {isa = PBXBuildFile; fileRef = 89B4814529BBE49400319778 /* now-playing.json */; };
@@ -70,6 +74,10 @@
 		8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Pointer.swift"; sourceTree = "<group>"; };
 		899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Loading.swift"; sourceTree = "<group>"; };
+		899FCA0629BCAB200051C13E /* CollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageView.swift; sourceTree = "<group>"; };
+		899FCA0929BCAC2C0051C13E /* topalbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = topalbums.json; sourceTree = "<group>"; };
+		899FCA0B29BCB58E0051C13E /* CreateCollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCollageView.swift; sourceTree = "<group>"; };
+		899FCA0D29BCB6550051C13E /* CollageImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollageImage.swift; sourceTree = "<group>"; };
 		89B4814329BBE3DF00319778 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		89B4814529BBE49400319778 /* now-playing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "now-playing.json"; sourceTree = "<group>"; };
 		89B4814829BBE62D00319778 /* NowPlayingIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingIcon.swift; sourceTree = "<group>"; };
@@ -153,6 +161,7 @@
 		897A3682298A661E0020AA80 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				899FCA0829BCAB5E0051C13E /* MockData */,
 				897A368D298A6A0A0020AA80 /* Structs */,
 				897A3683298A662C0020AA80 /* LastfmAPI.swift */,
 				898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */,
@@ -163,6 +172,7 @@
 		897A368A298A69A00020AA80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				899FCA0529BCAB140051C13E /* Collage */,
 				898A6A3329B78E6600EC2C12 /* Spotify */,
 				89C837F1298C487A007E3062 /* Auth */,
 				89C837F4298D73F6007E3062 /* Stats */,
@@ -182,6 +192,7 @@
 				89C837E6298C21A6007E3062 /* LovedTracksResponse.swift */,
 				89C837F7298D8FD1007E3062 /* ArtistInfoResponse.swift */,
 				89EBB8D3298B09D900AAFE7A /* Shared.swift */,
+				899FCA0D29BCB6550051C13E /* CollageImage.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -193,6 +204,23 @@
 				898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */,
 			);
 			path = Spotify;
+			sourceTree = "<group>";
+		};
+		899FCA0529BCAB140051C13E /* Collage */ = {
+			isa = PBXGroup;
+			children = (
+				899FCA0629BCAB200051C13E /* CollageView.swift */,
+				899FCA0B29BCB58E0051C13E /* CreateCollageView.swift */,
+			);
+			path = Collage;
+			sourceTree = "<group>";
+		};
+		899FCA0829BCAB5E0051C13E /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				899FCA0929BCAC2C0051C13E /* topalbums.json */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 		89B4814729BBE62100319778 /* Lottie */ = {
@@ -328,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				897A367B298A65AB0020AA80 /* Preview Assets.xcassets in Resources */,
+				899FCA0A29BCAC2C0051C13E /* topalbums.json in Resources */,
 				89B4814629BBE49400319778 /* now-playing.json in Resources */,
 				897A3678298A65AB0020AA80 /* Assets.xcassets in Resources */,
 			);
@@ -348,6 +377,8 @@
 				89C837E7298C21A6007E3062 /* LovedTracksResponse.swift in Sources */,
 				89C837E2298BB505007E3062 /* RecentTracksView.swift in Sources */,
 				897A3684298A662C0020AA80 /* LastfmAPI.swift in Sources */,
+				899FCA0C29BCB58E0051C13E /* CreateCollageView.swift in Sources */,
+				899FCA0729BCAB200051C13E /* CollageView.swift in Sources */,
 				89EBB8D6298B0AD800AAFE7A /* TopAlbumsView.swift in Sources */,
 				89C837F0298C43AF007E3062 /* GetSessionResponse.swift in Sources */,
 				897A3676298A65AB0020AA80 /* ContentView.swift in Sources */,
@@ -357,6 +388,7 @@
 				8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */,
 				89EBB8D0298B086F00AAFE7A /* Rank.swift in Sources */,
 				898A6A3229B78BBE00EC2C12 /* Spotify.swift in Sources */,
+				899FCA0E29BCB6550051C13E /* CollageImage.swift in Sources */,
 				897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */,
 				89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */,
 				89B4814429BBE3DF00319778 /* LottieView.swift in Sources */,

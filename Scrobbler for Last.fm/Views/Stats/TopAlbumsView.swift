@@ -16,6 +16,10 @@ struct TopAlbumsView: View {
             .listStyle(.inset(alternatesRowBackgrounds: true))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
+                    Button("Create collage") { vm.isShowingSheet = true }
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
                     Picker("Period", selection: $vm.period) {
                         ForEach(Period.allCases, id: \.rawValue) { period in
                             Text(period.name)
@@ -27,6 +31,9 @@ struct TopAlbumsView: View {
             .loading(vm.isLoading)
             .task(id: vm.period.rawValue) {
                 await vm.load()
+            }
+            .sheet(isPresented: $vm.isShowingSheet) {
+                CreateCollageView()
             }
     }
     
@@ -68,6 +75,8 @@ final class TopAlbumsViewModel: ObservableObject {
     @Published var data: [Album] = []
     @Published var isLoading = true
     @Published var period: Period = .overall
+    
+    @Published var isShowingSheet = false
     
     func load() async {
         DispatchQueue.main.async {
