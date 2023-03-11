@@ -38,7 +38,7 @@ struct Album: Codable {
     }
     
     var playcountInt: Int? {
-        Int(playcount)
+        try? Int(playcount, format: .localizedInteger(locale: .current))
     }
     
     var scrobbles: String {
