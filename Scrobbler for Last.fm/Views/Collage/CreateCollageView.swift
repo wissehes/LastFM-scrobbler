@@ -12,36 +12,62 @@ import UniformTypeIdentifiers
 
 struct CreateCollageView: View {
     @StateObject var vm = CreateCollageViewModel()
-    @Environment(\.displayScale) var displayScale
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
-//            VStack(alignment: .center) {
-            Form {
-                Picker("Period", selection: $vm.period) {
-                    ForEach(Period.allCases, id: \.rawValue) { period in
-                        Text(period.name)
-                            .tag(period)
-                    }
-                }.pickerStyle(.menu)
+            VStack(alignment: .trailing) {
+//            Form {
+                GroupBox {
+                    VStack(alignment: .leading) {
+                        Picker("Period", selection: $vm.period) {
+                            ForEach(Period.allCases, id: \.rawValue) { period in
+                                Text(period.name)
+                                    .tag(period)
+                            }
+                        }.pickerStyle(.menu)
+                            .frame(maxWidth: 300)
+                        
+                        HStack {
+                            Text("Size")
+                            TextField("", value: $vm.size, formatter: NumberFormatter())
+                            Text("px")
+                        }.frame(maxWidth: 150)
+                    }.padding()
+                } label: {
+                    Label("Settings", systemImage: "gear")
+                }
                 
-                GroupBox("Preview") {
+                GroupBox {
                     if vm.isLoading {
                         ProgressView()
                             .padding()
                             .frame(width: 300, height: 300)
+                            .padding()
                     } else {
                         CollageView(items: vm.data, size: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .onDrag { vm.onDrag(scale: displayScale) ?? NSItemProvider() }
+                            .onDrag { vm.onDrag() ?? NSItemProvider() }
+                            .padding()
                     }
+                } label: {
+                    Label("Preview", systemImage: "photo.fill")
                 }
                 
-                Button("Export") {
+                HStack(alignment: .center) {
+                    Button() {
+                        vm.saveFile(dismiss: dismiss)
+                    } label: {
+                        Label("Save", systemImage: "square.and.arrow.down")
+                    }.disabled(vm.isLoading)
+                        .frame(alignment: .leading)
                     
-                }.disabled(vm.isLoading)
+                    Button() { dismiss() } label: {
+                        Label("Close", systemImage: "xmark.circle")
+                    }
+                }
             }.padding()
-                .frame(width: 500, height: 500)
+                .frame(minWidth: 500, minHeight: 550)
                 .task(id: vm.period) {
                     do {
                         try await vm.load()
@@ -49,6 +75,7 @@ struct CreateCollageView: View {
                         print(error)
                     }
                 }
+                .navigationTitle("Create a collage")
         }
     }
 }
@@ -58,7 +85,8 @@ final class CreateCollageViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var period: Period = .overall
     
-    @Published var isShowingSheet = false
+    @Published var size: Double = 600
+
     
     func load() async throws {
         DispatchQueue.main.async {
@@ -99,19 +127,19 @@ final class CreateCollageViewModel: ObservableObject {
         return Image(nsImage: image)
     }
     
-    @MainActor func render(scale: Double) -> NSImage? {
-        let collage = CollageView(items: self.data, size: 200)
+    @MainActor func render() -> NSImage? {
+        let collage = CollageView(items: self.data, size: size / 3)
+        print("size: ", size / 3)
         
         let renderer = ImageRenderer(content: collage)
-        
-        // make sure and use the correct display scale for this device
-        renderer.scale = scale
+
+        renderer.scale = 1
         
         return renderer.nsImage
     }
     
-    @MainActor func onDrag(scale: Double) -> NSItemProvider? {
-        guard let image = self.render(scale: scale) else { print("no image"); return nil }
+    @MainActor func onDrag() -> NSItemProvider? {
+        guard let image = self.render() else { print("no image"); return nil }
         guard let tiffRepresentation = image.tiffRepresentation,
               let bitmapImage = NSBitmapImageRep(data: tiffRepresentation),
               let bitmapRepresentation = bitmapImage.representation(using: .png, properties: [:]) else {
@@ -126,6 +154,37 @@ final class CreateCollageViewModel: ObservableObject {
         provider.suggestedName = url.lastPathComponent
         
         return provider
+    }
+    
+    @MainActor func saveFile(dismiss: DismissAction?) {
+        guard let url = showSavePanel() else { return }
+        guard let image = self.render() else { print("no image"); return }
+        guard let tiffRepresentation = image.tiffRepresentation,
+              let bitmapImage = NSBitmapImageRep(data: tiffRepresentation),
+              let bitmapRepresentation = bitmapImage.representation(using: .png, properties: [:]) else { return }
+        
+//        let url = url.appendingPathComponent("collage.png")
+        try? bitmapRepresentation.write(to: url)
+        
+        if let dismiss = dismiss {
+            dismiss()
+        }
+    }
+    
+    func showSavePanel() -> URL? {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [.png]
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        savePanel.allowsOtherFileTypes = false
+        savePanel.title = "Save your collage"
+//        savePanel.message = "Choose a folder and a name to store your text."
+        savePanel.nameFieldLabel = "File name:"
+//        savePanel.place
+        
+        let response = savePanel.runModal()
+        print(response)
+        return response == .OK ? savePanel.url : nil
     }
 }
 
