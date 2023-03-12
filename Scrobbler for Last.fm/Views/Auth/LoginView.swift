@@ -11,50 +11,28 @@ struct LoginView: View {
     
     @EnvironmentObject var authController: AuthController
     
-    @State var token: String?
-    @State var session: LFMSession?
-    
     @StateObject var vm = LoginViewModel()
     
     var body: some View {
-        if let token = token {
-            waitView(token)
-        } else {
-            buttonView
-        }
-    }
-    
-    func waitView(_ token: String) -> some View {
+        
         VStack {
-            Text("Waiting...")
-            ProgressView()
+            Text("Welcome to Scrobbler for Last.fm")
+                .font(.title)
+            Text("Click the `login` button to log in with Last.fm")
             
-            Button("Load") {
-                Task {
-                    await vm.load(token: token)
+            Button("Log in") {
+                Task { await vm.openLogin() }
+            }.disabled(vm.token != nil)
+                .padding()
+            if vm.token != nil {
+                HStack(spacing: 10) {
+                    Text("Loading...")
+                        .font(.headline)
+                    ProgressView()
                 }
-            }
-            
-            if let session = session {
-                Text("Session key: \(session.key)")
             }
         }.task(id: vm.repeating) {
-            await vm.load(token: token)
-        }
-    }
-    
-    var buttonView: some View {
-        VStack {
-            Text("Welcome")
-            
-            Button("Open login") {
-                Task {
-                    let token = await authController.openLogin()
-                    DispatchQueue.main.async {
-                        self.token = token
-                    }
-                }
-            }.padding()
+            await vm.load()
         }
     }
 }
@@ -71,7 +49,15 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
-    func load(token: String) async {
+    func openLogin() async {
+        let token = await AuthController.shared.openLogin()
+        DispatchQueue.main.async {
+            self.token = token
+        }
+    }
+    
+    func load() async {
+        guard let token = self.token else { return }
         do {
             let data = try await LastfmAPI.auth.getSession(token: token)
             
@@ -85,7 +71,7 @@ final class LoginViewModel: ObservableObject {
     }
 }
 
-                
+
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
