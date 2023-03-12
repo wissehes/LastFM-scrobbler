@@ -45,7 +45,7 @@ struct TopAlbumsView: View {
     
     func rowItem(_ item: Album) -> some View {
         HStack(alignment: .center) {
-            Rank(rank: item.attr.rank)
+            Rank(rank: item.attr.rank, emoji: true)
             
             ExternalImage(url: item.image.last?.text)
                 .clipShape(RoundedRectangle(cornerRadius: 10))

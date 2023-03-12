@@ -13,7 +13,7 @@ struct TopTracksView: View {
         List {
             ForEach(vm.data, id: \.id) { item in
                 HStack(alignment: .center) {
-                    Rank(rank: item.attr.rank)
+                    Rank(rank: item.attr.rank, emoji: true)
                     
                     VStack(alignment: .leading) {
                         Text(item.name)
