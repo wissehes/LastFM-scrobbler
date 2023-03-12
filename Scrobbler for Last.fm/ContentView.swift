@@ -83,6 +83,7 @@ struct ContentView: View {
             }.symbolRenderingMode(.multicolor)
                 .listStyle(.sidebar)
                 .navigationTitle("Sidebar")
+                .frame(minWidth: 175)
         } detail: {
             switch selectedPage {
             case .topArtists:

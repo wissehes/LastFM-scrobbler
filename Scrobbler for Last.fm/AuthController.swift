@@ -15,6 +15,16 @@ enum AuthState {
     case notAuthorized
 }
 
+extension AuthState {
+    var showLogoutButton: Bool {
+        if case .notAuthorized = self {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 final class AuthController: ObservableObject {
     @Published var state: AuthState = .loading
     
@@ -42,6 +52,7 @@ final class AuthController: ObservableObject {
     }
     
     func logOut() {
+        UserManager.standard.remove()
         withAnimation {
             self.state = .notAuthorized
         }
@@ -80,5 +91,9 @@ final class UserManager {
     func save(_ session: LFMSession) {
         guard let encoded = try? JSONEncoder().encode(session) else { return }
         UserDefaults.standard.set(encoded, forKey: UDDataKey)
+    }
+    
+    func remove() {
+        UserDefaults.standard.removeObject(forKey: UDDataKey)
     }
 }
