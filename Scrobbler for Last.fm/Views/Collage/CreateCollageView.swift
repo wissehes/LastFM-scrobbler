@@ -10,73 +10,84 @@ import Alamofire
 import Cocoa
 import UniformTypeIdentifiers
 
+enum CollageType {
+    case artists
+    case albums
+}
+
+enum ArtistImageError: Error {
+    case noImage
+    case imageError
+}
+
 struct CreateCollageView: View {
     @StateObject var vm = CreateCollageViewModel()
     @Environment(\.dismiss) var dismiss
     
+    var type: CollageType
+    
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .trailing) {
-//            Form {
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        Picker("Period", selection: $vm.period) {
-                            ForEach(Period.allCases, id: \.rawValue) { period in
-                                Text(period.name)
-                                    .tag(period)
-                            }
-                        }.pickerStyle(.menu)
-                            .frame(maxWidth: 300)
-                        
-                        HStack {
-                            Text("Size")
-                            TextField("", value: $vm.size, formatter: NumberFormatter())
-                            Text("px")
-                        }.frame(maxWidth: 150)
-                    }.padding()
-                } label: {
-                    Label("Settings", systemImage: "gear")
-                }
-                
-                GroupBox {
-                    if vm.isLoading {
-                        ProgressView()
-                            .padding()
-                            .frame(width: 300, height: 300)
-                            .padding()
-                    } else {
-                        CollageView(items: vm.data, size: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .onDrag { vm.onDrag() ?? NSItemProvider() }
-                            .padding()
-                    }
-                } label: {
-                    Label("Preview", systemImage: "photo.fill")
-                }
-                
-                HStack(alignment: .center) {
-                    Button() {
-                        vm.saveFile(dismiss: dismiss)
+        VStack(alignment: .trailing) {
+            GroupBox {
+                VStack(alignment: .leading) {
+                    Picker(selection: $vm.period) {
+                        ForEach(Period.allCases, id: \.rawValue) { period in
+                            Text(period.name)
+                                .tag(period)
+                        }
                     } label: {
-                        Label("Save", systemImage: "square.and.arrow.down")
-                    }.disabled(vm.isLoading)
-                        .frame(alignment: .leading)
+                        Label("Period", systemImage: "clock")
+                    }.pickerStyle(.menu)
+                        .frame(maxWidth: 300)
                     
-                    Button() { dismiss() } label: {
-                        Label("Close", systemImage: "xmark.circle")
+                    HStack {
+                        Label("Size", systemImage: "textformat.size")
+                        TextField("", value: $vm.size, formatter: NumberFormatter())
+                            .frame(maxWidth: 50)
+                        Text("px")
                     }
+                }.padding()
+            } label: {
+                Label("Settings", systemImage: "gear")
+            }
+            
+            GroupBox {
+                if vm.isLoading {
+                    ProgressView()
+                        .padding()
+                        .frame(width: 300, height: 300)
+                        .padding()
+                } else {
+                    CollageView(items: vm.data, size: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .onDrag { vm.onDrag() ?? NSItemProvider() }
+                        .padding()
                 }
-            }.padding()
-                .frame(minWidth: 500, minHeight: 550)
-                .task(id: vm.period) {
-                    do {
-                        try await vm.load()
-                    } catch {
-                        print(error)
-                    }
+            } label: {
+                Label("Preview", systemImage: "photo.fill")
+            }
+            
+            HStack(alignment: .center) {
+                Button() {
+                    vm.saveFile(dismiss: dismiss)
+                } label: {
+                    Label("Save", systemImage: "square.and.arrow.down")
+                }.disabled(vm.isLoading)
+                    .frame(alignment: .leading)
+                
+                Button() { dismiss() } label: {
+                    Label("Close", systemImage: "xmark.circle")
                 }
-                .navigationTitle("Create a collage")
-        }
+            }
+        }.padding()
+            .frame(minWidth: 500, minHeight: 550)
+            .task(id: vm.period) {
+                do {
+                    try await vm.load(type)
+                } catch {
+                    print(error)
+                }
+            }
     }
 }
 
@@ -85,10 +96,9 @@ final class CreateCollageViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var period: Period = .overall
     
-    @Published var size: Double = 600
-
+    @Published var size: Double = 1200
     
-    func load() async throws {
+    func load(_ type: CollageType) async throws {
         DispatchQueue.main.async {
             self.isLoading = true
         }
@@ -97,7 +107,40 @@ final class CreateCollageViewModel: ObservableObject {
                 self.isLoading = false
             }
         }
+                
+        switch type {
+        case .artists:
+            let images = try await self.getArtistsAndImages()
+            DispatchQueue.main.async {
+                self.data = images
+            }
+        case .albums:
+            let images = try await self.getAlbumsAndImages()
+            DispatchQueue.main.async {
+                self.data = images
+            }
+        }
+    }
+    
+    private func getArtistsAndImages() async throws -> [CollageImage] {
+        let data = try await LastfmAPI.getTopArtists(period: period)
+        let firstNine = Array(data.artists.prefix(9))
         
+        let mapped: [CollageImage] = await firstNine.asyncMap { item in
+            var collageImage = CollageImage(item)
+            let image = try? await loadArtistImage(artist: item)
+            if let image = image {
+                collageImage.image = image
+            }
+            // Wait 250 ms to try and not get rate-limited by last.fm
+            try? await Task.sleep(for: .milliseconds(250))
+            return collageImage
+        }
+        
+        return mapped
+    }
+    
+    private func getAlbumsAndImages() async throws -> [CollageImage] {
         let data = try await LastfmAPI.getTopAlbums(period: period)
         let firstNine = Array(data.albums.prefix(9))
         
@@ -110,9 +153,19 @@ final class CreateCollageViewModel: ObservableObject {
             return collageImage
         }
         
-        DispatchQueue.main.async {
-            self.data = mapped
-        }
+        return mapped
+    }
+    
+    private func loadArtistImage(artist: Artist) async throws -> Image {
+        let artistData = try await LastfmAPI.getArtistDetail(artist: artist)
+        guard let url = artistData.image.last?.text else { throw ArtistImageError.noImage }
+        
+        let imageData = try await AF.request(url)
+            .serializingData()
+            .value
+        
+        guard let nsImage = NSImage(data: imageData) else { throw ArtistImageError.imageError }
+        return Image(nsImage: nsImage)
     }
     
     func loadImage(_ item: Album) async throws -> Image? {
@@ -121,7 +174,7 @@ final class CreateCollageViewModel: ObservableObject {
         let data = try await AF.request(url)
             .serializingData()
             .value
-
+        
         guard let image = NSImage(data: data) else { return nil }
         
         return Image(nsImage: image)
@@ -132,7 +185,7 @@ final class CreateCollageViewModel: ObservableObject {
         print("size: ", size / 3)
         
         let renderer = ImageRenderer(content: collage)
-
+        
         renderer.scale = 1
         
         return renderer.nsImage
@@ -163,7 +216,7 @@ final class CreateCollageViewModel: ObservableObject {
               let bitmapImage = NSBitmapImageRep(data: tiffRepresentation),
               let bitmapRepresentation = bitmapImage.representation(using: .png, properties: [:]) else { return }
         
-//        let url = url.appendingPathComponent("collage.png")
+        //        let url = url.appendingPathComponent("collage.png")
         try? bitmapRepresentation.write(to: url)
         
         if let dismiss = dismiss {
@@ -178,9 +231,9 @@ final class CreateCollageViewModel: ObservableObject {
         savePanel.isExtensionHidden = false
         savePanel.allowsOtherFileTypes = false
         savePanel.title = "Save your collage"
-//        savePanel.message = "Choose a folder and a name to store your text."
+        //        savePanel.message = "Choose a folder and a name to store your text."
         savePanel.nameFieldLabel = "File name:"
-//        savePanel.place
+        //        savePanel.place
         
         let response = savePanel.runModal()
         print(response)
@@ -190,7 +243,7 @@ final class CreateCollageViewModel: ObservableObject {
 
 struct CreateCollageView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateCollageView()
+        CreateCollageView(type: .albums)
     }
 }
 

@@ -23,4 +23,9 @@ struct CollageImage {
         self.title = from.name
         self.scrobbles = from.playcountInt ?? 0
     }
+    
+    init(_ from: TopArtist) {
+        self.title = from.name
+        self.scrobbles = from.playcountInt ?? 0
+    }
 }
