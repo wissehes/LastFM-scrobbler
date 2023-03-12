@@ -32,7 +32,7 @@ struct CollageView: View {
     
     var grid: some View {
         LazyVGrid(columns: gridItems, spacing: 0) {
-            ForEach(items, id: \.albumName, content: imageItem(_:))
+            ForEach(items, id: \.title, content: imageItem(_:))
         }.frame(width: size * 3, height: size * 3)
     }
     
@@ -44,7 +44,7 @@ struct CollageView: View {
                 .frame(width: size, height: size)
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(item.albumName)
+                Text(item.title)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.secondary)
 //                    .font(.system(size: 10))

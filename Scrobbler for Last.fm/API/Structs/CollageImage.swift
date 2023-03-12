@@ -9,18 +9,18 @@ import Foundation
 import SwiftUI
 
 struct CollageImage {
-    let albumName: String
+    let title: String
     let scrobbles: Int
     var image: Image = Image(systemName: "opticaldisc.fill")
     
     init(albumName: String, scrobbles: Int, image: Image) {
-        self.albumName = albumName
+        self.title = albumName
         self.scrobbles = scrobbles
         self.image = image
     }
     
     init(_ from: Album) {
-        self.albumName = from.name
+        self.title = from.name
         self.scrobbles = from.playcountInt ?? 0
     }
 }
