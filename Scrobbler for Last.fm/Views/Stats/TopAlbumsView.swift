@@ -33,7 +33,7 @@ struct TopAlbumsView: View {
                 await vm.load()
             }
             .sheet(isPresented: $vm.isShowingSheet) {
-                CreateCollageView()
+                CreateCollageView(type: .albums)
             }
     }
     
