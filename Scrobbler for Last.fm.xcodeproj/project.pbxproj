@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		890507CD29BDF67600BDD6F7 /* CreateArtistCollageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890507CC29BDF67600BDD6F7 /* CreateArtistCollageView.swift */; };
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
 		897A3674298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A3673298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift */; };
@@ -55,7 +54,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		890507CC29BDF67600BDD6F7 /* CreateArtistCollageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArtistCollageView.swift; sourceTree = "<group>"; };
 		8948995529B8B6A400D0EE2B /* LongProgessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongProgessView.swift; sourceTree = "<group>"; };
 		8948995729B8C00700D0EE2B /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrobbler for Last.fm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,7 +211,6 @@
 			children = (
 				899FCA0629BCAB200051C13E /* CollageView.swift */,
 				899FCA0B29BCB58E0051C13E /* CreateCollageView.swift */,
-				890507CC29BDF67600BDD6F7 /* CreateArtistCollageView.swift */,
 			);
 			path = Collage;
 			sourceTree = "<group>";
@@ -395,7 +392,6 @@
 				897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */,
 				89C837DE298BABDC007E3062 /* TopTracksView.swift in Sources */,
 				89B4814429BBE3DF00319778 /* LottieView.swift in Sources */,
-				890507CD29BDF67600BDD6F7 /* CreateArtistCollageView.swift in Sources */,
 				89EBB8D2298B09AE00AAFE7A /* TopAlbumsResponse.swift in Sources */,
 				898A6A3B29B7A6C800EC2C12 /* ScrobblingAPI.swift in Sources */,
 				89C837F6298D7415007E3062 /* ArtistDetailView.swift in Sources */,
