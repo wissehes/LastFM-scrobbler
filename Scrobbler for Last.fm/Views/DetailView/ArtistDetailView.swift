@@ -61,44 +61,59 @@ struct ArtistDetailView: View {
                             Text("**\(myPlays.formatted())** Plays by you")
                                 .font(.callout)
                         }
-                        GroupBox {
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(artist.tags.tag, id: \.name) { tag in
-                                        Pill(text: tag.name, color: .pink)
-                                    }
-                                }
-                                .padding(.horizontal)
-                                .frame(height: 50)
-                            }
-                        } label: {
-                            Label("Tags", systemImage: "tag.circle")
-                        }
+                        tags(artist)
                         
-                        GroupBox {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(artist.similar.artist, id: \.name) { simArtist in
-                                        NavigationLink {
-                                            ArtistDetailView(artist: simArtist)
-                                        } label: {
-                                            Pill(text: simArtist.name, color: .indigo)
-                                                .pointerOnHover()
-                                        }.buttonStyle(.plain)
-
-                                    }
-                                }.padding(.horizontal)
-                                    .frame(height: 50)
-                            }
-                        } label: {
-                            Label("Similar artists", systemImage: "person.2")
-                        }
+                        simArtists(artist)
                         
                     }
                 }
                 
                 Text(artist.bio.content)
             }.padding()
+        }
+    }
+    
+    func tags(_ artist: ArtistInfo) -> some View {
+        GroupBox {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(artist.tags.tag, id: \.name) { tag in
+                        if let url = tag.url {
+                            Link(destination: url) {
+                                Pill(text: tag.name, color: .pink)
+                                    .pointerOnHover()
+                            }.buttonStyle(.plain)
+                        } else {
+                            Pill(text: tag.name, color: .pink)
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                .frame(height: 50)
+            }
+        } label: {
+            Label("Tags", systemImage: "tag.circle")
+        }
+    }
+    
+    func simArtists(_ artist: ArtistInfo) -> some View {
+        GroupBox {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(artist.similar.artist, id: \.name) { simArtist in
+                        NavigationLink {
+                            ArtistDetailView(artist: simArtist)
+                        } label: {
+                            Pill(text: simArtist.name, color: .indigo)
+                                .pointerOnHover()
+                        }.buttonStyle(.plain)
+
+                    }
+                }.padding(.horizontal)
+                    .frame(height: 50)
+            }
+        } label: {
+            Label("Similar artists", systemImage: "person.2")
         }
     }
 }

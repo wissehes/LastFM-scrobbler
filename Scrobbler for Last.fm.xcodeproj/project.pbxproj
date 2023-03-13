@@ -176,9 +176,9 @@
 				898A6A3329B78E6600EC2C12 /* Spotify */,
 				89C837F1298C487A007E3062 /* Auth */,
 				89C837F4298D73F6007E3062 /* Stats */,
+				89CBA0F529BF441000A75743 /* DetailView */,
 				89C837E1298BB505007E3062 /* RecentTracksView.swift */,
 				89C837E8298C228D007E3062 /* LovedTracksView.swift */,
-				89C837F5298D7415007E3062 /* ArtistDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +268,14 @@
 				89C837DD298BABDC007E3062 /* TopTracksView.swift */,
 			);
 			path = Stats;
+			sourceTree = "<group>";
+		};
+		89CBA0F529BF441000A75743 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				89C837F5298D7415007E3062 /* ArtistDetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		89EBB8CE298B085700AAFE7A /* Components */ = {

@@ -16,7 +16,7 @@ struct LFMArtistInfoResponse: Codable {
 struct ArtistInfo: Codable, Artist {
     let name: String
     let mbid: String?
-    let url: String
+    let url: URL?
     let image: [LFMImage]
     let streamable, ontour: String
     let stats: ArtistStats
@@ -84,5 +84,5 @@ struct Tags: Codable {
 // MARK: - Tag
 struct Tag: Codable {
     let name: String
-    let url: String
+    let url: URL?
 }
