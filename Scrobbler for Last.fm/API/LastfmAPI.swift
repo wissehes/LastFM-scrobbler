@@ -8,17 +8,21 @@
 import Foundation
 import Alamofire
 import CryptoKit
+import Cocoa
+import SwiftUI
 
 final class LastfmAPI {
     static var API_KEY: String {
         guard let key = Bundle.main.infoDictionary?["LASTFM_KEY"] as? String else {
-            fatalError("No Last.fm token")
+//            fatalError("No Last.fm token")
+            return ""
         }
         return key
     }
     static var API_SECRET: String {
         guard let key = Bundle.main.infoDictionary?["LASTFM_SECRET"] as? String else {
-            fatalError("No Last.fm secret")
+//            fatalError("No Last.fm secret")
+            return ""
         }
         return key
     }
@@ -149,6 +153,16 @@ final class LastfmAPI {
             .value
         
         return result.artist
+    }
+    
+    static func loadImage(_ url: URL) async throws -> Image? {
+        let data = try await AF.request(url)
+            .serializingData()
+            .value
+        
+        guard let image = NSImage(data: data) else { return nil }
+        
+        return Image(nsImage: image)
     }
 }
 
