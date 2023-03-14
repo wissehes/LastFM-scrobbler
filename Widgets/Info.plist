@@ -6,10 +6,11 @@
 	<string>$(LASTFM_KEY)</string>
 	<key>LASTFM_SECRET</key>
 	<string>$(LASTFM_SECRET)</string>
-	<key>NSUserActivityTypes</key>
-	<array>
-		<string>ConfigurationIntent</string>
-	</array>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+	</dict>
 	<key>SPOTIFY_ID</key>
 	<string>$(SPOTIFY_ID)</string>
 	<key>SPOTIFY_SECRET</key>
