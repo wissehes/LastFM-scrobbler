@@ -14,19 +14,22 @@ struct TopAlbumsEntry: TimelineEntry {
     var date: Date
     let configuration: ConfigurationIntent
     var albums: [CollageImage]
+    var username: String?
     var error: Error?
     
-    init(date: Date, configuration: ConfigurationIntent, albums: [CollageImage], error: Error? = nil) {
+    init(date: Date, configuration: ConfigurationIntent, albums: [CollageImage], username: String? = nil, error: Error? = nil) {
         self.date = date
         self.configuration = configuration
         self.albums = albums
+        self.username = username
         self.error = error
     }
-    
+
     init(configuration: ConfigurationIntent) {
         self.date = .now
         self.configuration = configuration
         self.albums = []
+        self.username = nil
         self.error = nil
     }
 }
@@ -35,12 +38,11 @@ struct TopAlbumsProvider: IntentTimelineProvider {
     typealias Entry = TopAlbumsEntry
     //    typealias Intent = ConfigurationIntent
     
-    
-    func getEntry(configuration: ConfigurationIntent) async throws -> Entry {
+    func getEntry(configuration: ConfigurationIntent, family: WidgetFamily = .systemMedium) async throws -> Entry {
         let data = try await LastfmAPI.getTopAlbums(period: configuration.Period.period)
         
-        var entry = TopAlbumsEntry(date: .now, configuration: configuration, albums: [])
-        let firstThree = Array(data.albums.prefix(3))
+        var entry = TopAlbumsEntry(date: .now, configuration: configuration, albums: [], username: data.attr.user)
+        let firstThree = Array(data.albums.prefix(9))
         let mapped: [CollageImage] = try await firstThree.asyncMap { album in
             var collageImage = CollageImage(album)
             
@@ -103,30 +105,104 @@ struct TopAlbumsProvider: IntentTimelineProvider {
 
 struct TopAlbumsWidgetView: View {
     var entry: TopAlbumsProvider.Entry
+    @Environment(\.widgetFamily) var family
     
-    var body: some View {
-        normal
+    var background: some View {
+        ContainerRelativeShape()
+            .fill(.cyan.gradient)
     }
     
-    var normal: some View {
+    var body: some View {
+        switch family {
+        case .systemMedium:
+            medium
+        case .systemLarge:
+            large
+        @unknown default:
+            medium
+        }
+    }
+    
+    var medium: some View {
         ZStack {
             //            LinearGradient(colors: [colors], startPoint: .bottomLeading, endPoint: .topTrailing)
             ContainerRelativeShape()
                 .fill(.cyan.gradient)
             
             VStack(alignment: .center, spacing: 5) {
-                Text("Top Albums")
+                usernameText(text: entry.username)
                     .font(.caption)
                     .fontWeight(.bold)
                     .padding(.top, 10)
                 
                 Spacer()
             }
-            HStack(alignment: .center, spacing: 5) {
-                ForEach(entry.albums, id: \.title) { item in
-                    newItemView(item)
-                }
-            }.padding()
+            GeometryReader { geo in
+                HStack(alignment: .center, spacing: 5) {
+                    ForEach(entry.albums.prefix(3), id: \.title) { item in
+                        newItemView(item)
+                    }
+                }.padding()
+            }
+        }
+    }
+    
+    let gridItems: [GridItem] = [
+        .init(.flexible(), spacing: 10, alignment: .center),
+        .init(.flexible(), spacing: 10, alignment: .center),
+        .init(.flexible(), spacing: 10, alignment: .center)
+    ]
+    
+    var large: some View {
+        ZStack {
+            background
+            
+            VStack(alignment: .center, spacing: 0) {
+                usernameText(text: entry.username)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 10)
+                    .padding(.bottom, 2.5)
+                Text(entry.configuration.Period.period.subtitle)
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10)
+                
+                GeometryReader { geo in
+                    LazyVGrid(columns: gridItems, spacing: 10) {
+                        ForEach(entry.albums, id: \.title) { item in
+                            largeItemView(item, geo: geo)
+                        }
+                    }
+                }.padding([.bottom, .horizontal], 30)
+            }
+        }
+    }
+    
+    func largeItemView(_ item: CollageImage, geo: GeometryProxy) -> some View {
+        ZStack {
+            item.image
+                .resizable()
+                .scaledToFill()
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .frame(
+                    width: geo.size.width / 3 - 5,
+                    height: geo.size.width / 3 - 5
+                )
+            
+            VStack {
+                Spacer()
+                
+                Text("\(item.scrobbles) plays")
+                    .font(.system(.caption2, design: .rounded))
+                    .lineLimit(1)
+                    .multilineTextAlignment(.center)
+                    .padding(.leading, 3)
+                    .padding(.trailing, 3)
+                    .background(.thinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+            }.padding(.bottom, 2.5)
         }
     }
     
@@ -158,6 +234,15 @@ struct TopAlbumsWidgetView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func usernameText(text: String?) -> some View {
+        if let text = text {
+            Text("\(text)'s most listened albums")
+        } else {
+            Text("Your most listened albums")
+        }
+    }
 }
 //@main
 struct TopAlbumsWidget: Widget {
@@ -166,7 +251,7 @@ struct TopAlbumsWidget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: TopAlbumsProvider()) { entry in
             TopAlbumsWidgetView(entry: entry)
-        }//.supportedFamilies([.systemMedium])
+        }.supportedFamilies([.systemMedium, .systemLarge])
         .configurationDisplayName("Top Albums")
         .description("Shows your most listened albums.")
     }
@@ -178,26 +263,5 @@ struct TopAlbumsWidget_Previews: PreviewProvider {
             entry: .init(date: .now, configuration: ConfigurationIntent(), albums: .examples)
         )
         .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
-}
-
-extension LFMPeriod {
-    var period: Period {
-        switch self {
-        case .unknown:
-            return .overall
-        case .week:
-            return .week
-        case .month:
-            return .month
-        case .quarter:
-            return .quarter
-        case .halfyear:
-            return .halfyear
-        case .year:
-            return .year
-        case .overall:
-            return .overall
-        }
     }
 }

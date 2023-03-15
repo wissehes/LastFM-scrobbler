@@ -10,6 +10,8 @@
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
 		8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
+		8969CA0E29C21699001A6865 /* Period+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969CA0D29C21699001A6865 /* Period+Text.swift */; };
+		8969CA0F29C2170F001A6865 /* Period+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969CA0D29C21699001A6865 /* Period+Text.swift */; };
 		8978C0BA29BF85EE00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0B929BF85EE00E1F4B0 /* Alamofire */; };
 		8978C0BC29BF868F00E1F4B0 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BB29BF868F00E1F4B0 /* SpotifyAPI */; };
 		8978C0BE29BF868F00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BD29BF868F00E1F4B0 /* Alamofire */; };
@@ -105,6 +107,7 @@
 /* Begin PBXFileReference section */
 		8948995529B8B6A400D0EE2B /* LongProgessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongProgessView.swift; sourceTree = "<group>"; };
 		8948995729B8C00700D0EE2B /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
+		8969CA0D29C21699001A6865 /* Period+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Period+Text.swift"; sourceTree = "<group>"; };
 		897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrobbler for Last.fm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		897A3673298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrobbler_for_Last_fmApp.swift; sourceTree = "<group>"; };
 		897A3675298A65AB0020AA80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -393,6 +396,7 @@
 				899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */,
 				8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */,
 				89CBA12729BF83D400A75743 /* Sequence+Async.swift */,
+				8969CA0D29C21699001A6865 /* Period+Text.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -550,6 +554,7 @@
 				899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */,
 				89EBB8D4298B09D900AAFE7A /* Shared.swift in Sources */,
 				898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */,
+				8969CA0E29C21699001A6865 /* Period+Text.swift in Sources */,
 				89C837F3298C4882007E3062 /* LoginView.swift in Sources */,
 				8948995829B8C00700D0EE2B /* Pill.swift in Sources */,
 				8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */,
@@ -568,6 +573,7 @@
 				89CBA10229BF47A100A75743 /* Widgets.swift in Sources */,
 				89CBA11E29BF4BA500A75743 /* CollageImage.swift in Sources */,
 				89CBA12929BF83D400A75743 /* Sequence+Async.swift in Sources */,
+				8969CA0F29C2170F001A6865 /* Period+Text.swift in Sources */,
 				89CBA11F29BF4BA500A75743 /* TopTracksResponse.swift in Sources */,
 				89CBA11A29BF4BA500A75743 /* RecentTracksResponse.swift in Sources */,
 				89CBA11D29BF4BA500A75743 /* Shared.swift in Sources */,
