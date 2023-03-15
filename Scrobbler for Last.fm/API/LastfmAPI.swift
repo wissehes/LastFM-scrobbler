@@ -238,25 +238,6 @@ enum Period: String, CaseIterable {
     case overall = "overall"
 }
 
-extension Period {
-    var name: String {
-        switch self {
-        case .week:
-            return "Last 7 days"
-        case .month:
-            return "Last 30 days"
-        case .quarter:
-            return "Last 90 days"
-        case .halfyear:
-            return "Last 180 days"
-        case .year:
-            return "Last 365 days"
-        case .overall:
-            return "All time"
-        }
-    }
-}
-
 enum Method: String {
     case topArtists = "user.getTopArtists"
     case topAlbums = "user.getTopAlbums"
