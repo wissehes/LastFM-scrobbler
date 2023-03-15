@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
+		8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
 		8978C0BA29BF85EE00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0B929BF85EE00E1F4B0 /* Alamofire */; };
 		8978C0BC29BF868F00E1F4B0 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BB29BF868F00E1F4B0 /* SpotifyAPI */; };
 		8978C0BE29BF868F00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BD29BF868F00E1F4B0 /* Alamofire */; };
@@ -551,6 +552,7 @@
 				898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */,
 				89C837F3298C4882007E3062 /* LoginView.swift in Sources */,
 				8948995829B8C00700D0EE2B /* Pill.swift in Sources */,
+				8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */,
 				897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

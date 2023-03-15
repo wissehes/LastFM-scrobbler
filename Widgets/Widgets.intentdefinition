@@ -128,6 +128,11 @@
 					<string>LFMPeriod</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>quarter</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>Period</string>
 					<key>INIntentParameterPromptDialogs</key>

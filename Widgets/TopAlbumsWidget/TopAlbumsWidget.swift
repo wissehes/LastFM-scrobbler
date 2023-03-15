@@ -33,18 +33,18 @@ struct TopAlbumsEntry: TimelineEntry {
 
 struct TopAlbumsProvider: IntentTimelineProvider {
     typealias Entry = TopAlbumsEntry
-//    typealias Intent = ConfigurationIntent
+    //    typealias Intent = ConfigurationIntent
     
     
     func getEntry(configuration: ConfigurationIntent) async throws -> Entry {
         let data = try await LastfmAPI.getTopAlbums(period: configuration.Period.period)
         
         var entry = TopAlbumsEntry(date: .now, configuration: configuration, albums: [])
-        
-        let mapped: [CollageImage] = try await data.albums.asyncMap { album in
+        let firstThree = Array(data.albums.prefix(3))
+        let mapped: [CollageImage] = try await firstThree.asyncMap { album in
             var collageImage = CollageImage(album)
             
-            guard let url = album.image.first?.text else { return collageImage }
+            guard let url = album.image.last?.text else { return collageImage }
             let image = try await LastfmAPI.loadImage(url)
             if let image = image {
                 collageImage.image = image
@@ -52,7 +52,7 @@ struct TopAlbumsProvider: IntentTimelineProvider {
             return collageImage
         }
         entry.albums = mapped
-    
+        
         return entry
     }
     
@@ -64,16 +64,16 @@ struct TopAlbumsProvider: IntentTimelineProvider {
     
     // Called when
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> Void) {
-//        Task {
-//            do {
-//                let entry = try await getEntry(configuration: configuration)
-//                completion(entry)
-//            } catch {
-//                var entry = TopAlbumsEntry(configuration: configuration)
-//                entry.error = error
-//                completion(entry)
-//            }
-//        }
+        //        Task {
+        //            do {
+        //                let entry = try await getEntry(configuration: configuration)
+        //                completion(entry)
+        //            } catch {
+        //                var entry = TopAlbumsEntry(configuration: configuration)
+        //                entry.error = error
+        //                completion(entry)
+        //            }
+        //        }
         let entry = Entry(date: .now, configuration: ConfigurationIntent(), albums: .examples)
         completion(entry)
     }
@@ -82,8 +82,7 @@ struct TopAlbumsProvider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         let afterDate = Calendar.current.date(byAdding: .hour, value: 12, to: .now)!
         let reloadPolicy: TimelineReloadPolicy = .after(afterDate)
-        print("Getting timeline...")
-        print("lastfm: ", Bundle.main.infoDictionary)
+        
         Task {
             do {
                 let entry = try await getEntry(configuration: configuration)
@@ -106,16 +105,56 @@ struct TopAlbumsWidgetView: View {
     var entry: TopAlbumsProvider.Entry
     
     var body: some View {
+        normal
+    }
+    
+    var normal: some View {
         ZStack {
-            Color.cyan
+            //            LinearGradient(colors: [colors], startPoint: .bottomLeading, endPoint: .topTrailing)
+            ContainerRelativeShape()
+                .fill(.cyan.gradient)
             
-            VStack {
-                HStack {
-                    ForEach(entry.albums, id: \.title) { item in
-                        Text(item.title)
-                    }
+            VStack(alignment: .center, spacing: 5) {
+                Text("Top Albums")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .padding(.top, 10)
+                
+                Spacer()
+            }
+            HStack(alignment: .center, spacing: 5) {
+                ForEach(entry.albums, id: \.title) { item in
+                    newItemView(item)
                 }
-                Text(entry.error?.localizedDescription ?? "")
+            }.padding()
+        }
+    }
+    
+    func newItemView(_ item: CollageImage) -> some View {
+        GeometryReader { geo in
+            ZStack {
+                item.image
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .frame(
+                        width: geo.size.width,
+                        height: geo.size.width
+                    )
+                
+                VStack {
+                    Spacer()
+                    
+                    Text("\(item.scrobbles) plays")
+                        .font(.system(.caption2, design: .rounded))
+                        .lineLimit(1)
+                        .multilineTextAlignment(.center)
+                        .padding(.leading, 3)
+                        .padding(.trailing, 3)
+                        .background(.thinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .padding(.bottom, 5)
+                }
             }
         }
     }
@@ -128,8 +167,8 @@ struct TopAlbumsWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: TopAlbumsProvider()) { entry in
             TopAlbumsWidgetView(entry: entry)
         }//.supportedFamilies([.systemMedium])
-            .configurationDisplayName("Top Albums")
-            .description("Shows your most listened albums.")
+        .configurationDisplayName("Top Albums")
+        .description("Shows your most listened albums.")
     }
 }
 
@@ -138,7 +177,7 @@ struct TopAlbumsWidget_Previews: PreviewProvider {
         TopAlbumsWidgetView(
             entry: .init(date: .now, configuration: ConfigurationIntent(), albums: .examples)
         )
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
 
