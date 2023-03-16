@@ -10,12 +10,14 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct TopArtistsEntry: TimelineEntry {
+struct TopArtistsEntry: TimelineEntry, WidgetEntry {
     var date: Date
     let configuration: ConfigurationIntent
     var artists: [CollageImage]
     var username: String?
     var error: Error?
+    
+    var items: [CollageImage] { self.artists }
     
     init(date: Date, configuration: ConfigurationIntent, artists: [CollageImage], username: String? = nil, error: Error? = nil) {
         self.date = date
@@ -112,7 +114,7 @@ struct TopArtistsWidgetView: View {
         case .systemSmall:
             TopArtistsSmallWidgetView(entry: entry)
         case .systemMedium:
-            TopArtistsMediumWidgetView(entry: entry)
+            MediumGridWidget(type: .artists, entry: entry)
         default:
             Text("hi")
         }
