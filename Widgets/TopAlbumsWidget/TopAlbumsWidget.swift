@@ -131,7 +131,7 @@ struct TopAlbumsWidgetView: View {
             
             VStack(alignment: .center, spacing: 5) {
                 usernameText(text: entry.username)
-                    .font(.caption)
+                    .font(.title3)
                     .fontWeight(.bold)
                     .padding(.top, 10)
                 
@@ -163,11 +163,11 @@ struct TopAlbumsWidgetView: View {
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding(.top, 10)
-                    .padding(.bottom, 2.5)
+                    .padding(.bottom, 0)
                 Text(entry.configuration.Period.period.subtitle)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 5)
                 
                 GeometryReader { geo in
                     LazyVGrid(columns: gridItems, spacing: 10) {
