@@ -81,19 +81,20 @@ final class UserManager {
     private let UDDataKey = "lfmuser"
     
     static let standard = UserManager()
+    let group = UserDefaults(suiteName: "group.nl.wissehes.Scrobbler-for-Last-fm")!
     
     func get() -> LFMSession? {
-        guard let data = UserDefaults.standard.data(forKey: UDDataKey) else { return nil }
+        guard let data = group.data(forKey: UDDataKey) else { return nil }
         guard let decoded = try? JSONDecoder().decode(LFMSession.self, from: data) else { return nil}
         return decoded
     }
     
     func save(_ session: LFMSession) {
         guard let encoded = try? JSONEncoder().encode(session) else { return }
-        UserDefaults.standard.set(encoded, forKey: UDDataKey)
+        group.set(encoded, forKey: UDDataKey)
     }
     
     func remove() {
-        UserDefaults.standard.removeObject(forKey: UDDataKey)
+        group.removeObject(forKey: UDDataKey)
     }
 }
