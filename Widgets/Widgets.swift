@@ -52,6 +52,7 @@ struct WidgetsEntryView : View {
 @main
 struct ScrobblerWidgets: WidgetBundle {
     var body: some Widget {
+        TopArtistsWidget()
         TopAlbumsWidget()
         Widgets()
     }
