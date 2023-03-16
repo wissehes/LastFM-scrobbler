@@ -171,8 +171,8 @@ struct TopAlbumsWidgetView: View {
                 
                 GeometryReader { geo in
                     LazyVGrid(columns: gridItems, spacing: 10) {
-                        ForEach(entry.albums, id: \.title) { item in
-                            largeItemView(item, geo: geo)
+                        ForEach(Array(entry.albums.enumerated()), id: \.element.title) { index, item in
+                            largeItemView(item, index: index, geo: geo)
                         }
                     }
                 }.padding([.bottom, .horizontal], 30)
@@ -180,7 +180,7 @@ struct TopAlbumsWidgetView: View {
         }
     }
     
-    func largeItemView(_ item: CollageImage, geo: GeometryProxy) -> some View {
+    func largeItemView(_ item: CollageImage, index: Int, geo: GeometryProxy) -> some View {
         ZStack {
             item.image
                 .resizable()
@@ -190,6 +190,18 @@ struct TopAlbumsWidgetView: View {
                     width: geo.size.width / 3 - 5,
                     height: geo.size.width / 3 - 5
                 )
+            
+            Text("\(index + 1)")
+                .font(.system(.caption2, design: .rounded))
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .multilineTextAlignment(.center)
+                .padding(.leading, 4)
+                .padding(.trailing, 4)
+                .background(.thinMaterial)
+                .clipShape(Circle())
+                .frame(maxWidth: 150, maxHeight: 150, alignment: .topLeading)
+                .padding([.leading, .top], 5)
             
             VStack {
                 Spacer()
