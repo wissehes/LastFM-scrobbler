@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890FE85029C30D6E001FA70C /* AlbumGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE84D29C30AB6001FA70C /* AlbumGridWidget.swift */; };
+		890FE85329C30ED2001FA70C /* TopArtistsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */; };
+		890FE85629C30EF0001FA70C /* TopArtistsSmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85429C30EE6001FA70C /* TopArtistsSmallWidgetView.swift */; };
+		890FE85829C30F9E001FA70C /* TopArtistsMediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85729C30F9E001FA70C /* TopArtistsMediumWidgetView.swift */; };
+		890FE85B29C31C39001FA70C /* MediumGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85A29C31C39001FA70C /* MediumGridWidget.swift */; };
+		890FE85D29C31C41001FA70C /* LargeGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85C29C31C41001FA70C /* LargeGridWidget.swift */; };
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
 		8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
@@ -105,6 +111,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		890FE84D29C30AB6001FA70C /* AlbumGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGridWidget.swift; sourceTree = "<group>"; };
+		890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsWidget.swift; sourceTree = "<group>"; };
+		890FE85429C30EE6001FA70C /* TopArtistsSmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsSmallWidgetView.swift; sourceTree = "<group>"; };
+		890FE85729C30F9E001FA70C /* TopArtistsMediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsMediumWidgetView.swift; sourceTree = "<group>"; };
+		890FE85A29C31C39001FA70C /* MediumGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumGridWidget.swift; sourceTree = "<group>"; };
+		890FE85C29C31C41001FA70C /* LargeGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGridWidget.swift; sourceTree = "<group>"; };
 		8948995529B8B6A400D0EE2B /* LongProgessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongProgessView.swift; sourceTree = "<group>"; };
 		8948995729B8C00700D0EE2B /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		8969CA0D29C21699001A6865 /* Period+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Period+Text.swift"; sourceTree = "<group>"; };
@@ -188,6 +200,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		890FE84C29C30A4D001FA70C /* AlbumGrid */ = {
+			isa = PBXGroup;
+			children = (
+				890FE84D29C30AB6001FA70C /* AlbumGridWidget.swift */,
+			);
+			path = AlbumGrid;
+			sourceTree = "<group>";
+		};
+		890FE84F29C30ACC001FA70C /* TopArtistsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */,
+				890FE85429C30EE6001FA70C /* TopArtistsSmallWidgetView.swift */,
+				890FE85729C30F9E001FA70C /* TopArtistsMediumWidgetView.swift */,
+			);
+			path = TopArtistsWidget;
+			sourceTree = "<group>";
+		};
+		890FE85929C31C30001FA70C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				890FE85A29C31C39001FA70C /* MediumGridWidget.swift */,
+				890FE85C29C31C41001FA70C /* LargeGridWidget.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		897A3667298A65AB0020AA80 = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +405,9 @@
 		89CBA10029BF47A100A75743 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				890FE85929C31C30001FA70C /* Shared */,
+				890FE84F29C30ACC001FA70C /* TopArtistsWidget */,
+				890FE84C29C30A4D001FA70C /* AlbumGrid */,
 				89CBA11129BF49E000A75743 /* TopAlbumsWidget */,
 				89CBA10129BF47A100A75743 /* Widgets.swift */,
 				89CBA10329BF47A100A75743 /* Widgets.intentdefinition */,
@@ -566,10 +608,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				890FE85829C30F9E001FA70C /* TopArtistsMediumWidgetView.swift in Sources */,
+				890FE85629C30EF0001FA70C /* TopArtistsSmallWidgetView.swift in Sources */,
 				89CBA11629BF4BA500A75743 /* GetTokenResponse.swift in Sources */,
 				89CBA11C29BF4BA500A75743 /* LovedTracksResponse.swift in Sources */,
 				89CBA10829BF47A300A75743 /* Widgets.intentdefinition in Sources */,
 				89CBA11429BF4B7400A75743 /* AuthController.swift in Sources */,
+				890FE85029C30D6E001FA70C /* AlbumGridWidget.swift in Sources */,
 				89CBA10229BF47A100A75743 /* Widgets.swift in Sources */,
 				89CBA11E29BF4BA500A75743 /* CollageImage.swift in Sources */,
 				89CBA12929BF83D400A75743 /* Sequence+Async.swift in Sources */,
@@ -579,10 +624,13 @@
 				89CBA11D29BF4BA500A75743 /* Shared.swift in Sources */,
 				89CBA11B29BF4BA500A75743 /* ArtistInfoResponse.swift in Sources */,
 				89CBA12129BF825300A75743 /* TopAlbumsWidget.swift in Sources */,
+				890FE85329C30ED2001FA70C /* TopArtistsWidget.swift in Sources */,
 				89CBA11729BF4BA500A75743 /* TopAlbumsResponse.swift in Sources */,
 				89CBA11529BF4B7900A75743 /* LastfmAPI.swift in Sources */,
+				890FE85D29C31C41001FA70C /* LargeGridWidget.swift in Sources */,
 				89CBA12229BF833A00A75743 /* ScrobblingAPI.swift in Sources */,
 				89CBA11829BF4BA500A75743 /* GetSessionResponse.swift in Sources */,
+				890FE85B29C31C39001FA70C /* MediumGridWidget.swift in Sources */,
 				89CBA11929BF4BA500A75743 /* TopArtistsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
