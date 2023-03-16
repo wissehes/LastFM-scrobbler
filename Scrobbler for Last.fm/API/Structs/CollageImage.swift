@@ -33,9 +33,12 @@ struct CollageImage {
 }
 
 extension Array where Element == CollageImage {
-    static var examples: [CollageImage] = [
-        .init(albumName: "Album 1", scrobbles: 1000),
-        .init(albumName: "Album 2", scrobbles: 500),
-        .init(albumName: "Album 3", scrobbles: 250)
-    ]
+    static var examples: [CollageImage] {
+        var array: [CollageImage] = []
+        
+        for i in 1...10 {
+            array.append(.init(albumName: "Album \(i)", scrobbles: 1000 - i * 100))
+        }
+        return array
+    }
 }
