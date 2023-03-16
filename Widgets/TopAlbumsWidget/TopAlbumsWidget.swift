@@ -66,16 +66,6 @@ struct TopAlbumsProvider: IntentTimelineProvider {
     
     // Called when
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> Void) {
-        //        Task {
-        //            do {
-        //                let entry = try await getEntry(configuration: configuration)
-        //                completion(entry)
-        //            } catch {
-        //                var entry = TopAlbumsEntry(configuration: configuration)
-        //                entry.error = error
-        //                completion(entry)
-        //            }
-        //        }
         let entry = Entry(date: .now, configuration: ConfigurationIntent(), albums: .examples)
         completion(entry)
     }
