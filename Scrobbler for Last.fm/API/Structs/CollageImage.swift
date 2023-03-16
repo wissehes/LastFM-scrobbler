@@ -36,7 +36,7 @@ extension Array where Element == CollageImage {
     static var examples: [CollageImage] {
         var array: [CollageImage] = []
         
-        for i in 1...10 {
+        for i in 1...9 {
             array.append(.init(albumName: "Album \(i)", scrobbles: 1000 - i * 100))
         }
         return array
