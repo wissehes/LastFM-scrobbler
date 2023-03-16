@@ -231,7 +231,7 @@ struct TopAlbumsWidgetView: View {
                         .padding(.trailing, 3)
                         .background(.thinMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding(.bottom, 5)
+                        .padding(.bottom, 10)
                 }
             }
         }
