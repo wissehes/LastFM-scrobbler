@@ -77,7 +77,7 @@ struct LargeGridWidget: View {
                 Text(item.title)
                     .headerStyle()
                     .scaledToFit()
-                    .minimumScaleFactor(0.5)
+                    .minimumScaleFactor(0.75)
                     .frame(maxWidth: geo.size.width)
                 
                 Text("\(item.scrobbles) plays")
