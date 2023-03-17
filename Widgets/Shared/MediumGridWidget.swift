@@ -55,23 +55,11 @@ struct MediumGridWidget: View {
                     Spacer()
                     if type == .artists {
                         Text(item.title)
-                            .font(.system(.caption2, design: .rounded, weight: .bold))
-                            .lineLimit(1)
-                            .multilineTextAlignment(.center)
-                            .padding(.leading, 3)
-                            .padding(.trailing, 3)
-                            .background(.thinMaterial)
-                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .headerStyle()
                     }
                     Text("\(item.scrobbles) plays")
-                        .font(.system(.caption, design: .rounded))
-                        .lineLimit(1)
-                        .multilineTextAlignment(.center)
-                        .padding(.leading, 3)
-                        .padding(.trailing, 3)
-                        .background(.thinMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding(.bottom, 5)
+                        .subheaderStyle()
+                        .padding(.bottom, 7.5)
                 }
             }
         }
