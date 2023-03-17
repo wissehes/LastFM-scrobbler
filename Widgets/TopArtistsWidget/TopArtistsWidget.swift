@@ -112,7 +112,7 @@ struct TopArtistsWidgetView: View {
     var body: some View {
         switch family {
         case .systemSmall:
-            TopArtistsSmallWidgetView(entry: entry)
+            SmallGridWidget(entry: entry)
         case .systemMedium:
             MediumGridWidget(type: .artists, entry: entry)
         case .systemLarge:
