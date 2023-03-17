@@ -38,7 +38,7 @@ extension View {
     func headerStyle() -> some View {
         self
             .font(.system(size: 10, weight: .bold, design: .rounded))
-            .lineLimit(1)
+            .lineLimit(2)
             .multilineTextAlignment(.center)
             .padding(.leading, 3)
             .padding(.trailing, 3)
