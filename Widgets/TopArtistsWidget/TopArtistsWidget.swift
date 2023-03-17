@@ -115,6 +115,8 @@ struct TopArtistsWidgetView: View {
             TopArtistsSmallWidgetView(entry: entry)
         case .systemMedium:
             MediumGridWidget(type: .artists, entry: entry)
+        case .systemLarge:
+            LargeGridWidget(type: .artists, entry: entry)
         default:
             Text("hi")
         }
