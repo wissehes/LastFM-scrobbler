@@ -53,10 +53,8 @@ struct MediumGridWidget: View {
                 
                 VStack {
                     Spacer()
-                    if type == .artists {
-                        Text(item.title)
-                            .headerStyle()
-                    }
+                    Text(item.title)
+                        .headerStyle()
                     Text("\(item.scrobbles) plays")
                         .subheaderStyle()
                         .padding(.bottom, 7.5)
