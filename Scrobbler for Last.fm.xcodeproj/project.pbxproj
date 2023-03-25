@@ -10,6 +10,7 @@
 		890FE85329C30ED2001FA70C /* TopArtistsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */; };
 		890FE85B29C31C39001FA70C /* MediumGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85A29C31C39001FA70C /* MediumGridWidget.swift */; };
 		890FE85D29C31C41001FA70C /* LargeGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85C29C31C41001FA70C /* LargeGridWidget.swift */; };
+		8923A6FD29C8D635006B6381 /* RecentTracksWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */; };
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
 		8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
@@ -115,6 +116,7 @@
 		890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsWidget.swift; sourceTree = "<group>"; };
 		890FE85A29C31C39001FA70C /* MediumGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumGridWidget.swift; sourceTree = "<group>"; };
 		890FE85C29C31C41001FA70C /* LargeGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGridWidget.swift; sourceTree = "<group>"; };
+		8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTracksWidget.swift; sourceTree = "<group>"; };
 		8948995529B8B6A400D0EE2B /* LongProgessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongProgessView.swift; sourceTree = "<group>"; };
 		8948995729B8C00700D0EE2B /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		8969CA0D29C21699001A6865 /* Period+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Period+Text.swift"; sourceTree = "<group>"; };
@@ -201,13 +203,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		890FE84C29C30A4D001FA70C /* AlbumGrid */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AlbumGrid;
-			sourceTree = "<group>";
-		};
 		890FE84F29C30ACC001FA70C /* TopArtistsWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +220,14 @@
 				89DF12D329C3DB1700A2570F /* WidgetStuff.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		8923A6FC29C8D61B006B6381 /* RecentTracksWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */,
+			);
+			path = RecentTracksWidget;
 			sourceTree = "<group>";
 		};
 		897A3667298A65AB0020AA80 = {
@@ -406,9 +409,9 @@
 		89CBA10029BF47A100A75743 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				8923A6FC29C8D61B006B6381 /* RecentTracksWidget */,
 				890FE85929C31C30001FA70C /* Shared */,
 				890FE84F29C30ACC001FA70C /* TopArtistsWidget */,
-				890FE84C29C30A4D001FA70C /* AlbumGrid */,
 				89CBA11129BF49E000A75743 /* TopAlbumsWidget */,
 				89CBA10129BF47A100A75743 /* Widgets.swift */,
 				89CBA10329BF47A100A75743 /* Widgets.intentdefinition */,
@@ -630,6 +633,7 @@
 				89CBA12929BF83D400A75743 /* Sequence+Async.swift in Sources */,
 				8969CA0F29C2170F001A6865 /* Period+Text.swift in Sources */,
 				89CBA11F29BF4BA500A75743 /* TopTracksResponse.swift in Sources */,
+				8923A6FD29C8D635006B6381 /* RecentTracksWidget.swift in Sources */,
 				89CBA11A29BF4BA500A75743 /* RecentTracksResponse.swift in Sources */,
 				89CBA11D29BF4BA500A75743 /* Shared.swift in Sources */,
 				89CBA11B29BF4BA500A75743 /* ArtistInfoResponse.swift in Sources */,

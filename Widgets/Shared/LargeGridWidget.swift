@@ -67,10 +67,14 @@ struct LargeGridWidget: View {
                 .font(.system(.caption2, design: .rounded))
                 .fontWeight(.bold)
                 .lineLimit(1)
-                .pillbackground()
+                .multilineTextAlignment(.center)
+                .padding(.leading, 5)
+                .padding(.trailing, 5)
+                .background(.thinMaterial)
+                .clipShape(Circle())
                 .frame(maxWidth: 150, maxHeight: 150, alignment: .topLeading)
                 .padding([.leading, .top], 5)
-            
+                
             VStack {
                 Spacer()
                 
@@ -82,7 +86,7 @@ struct LargeGridWidget: View {
                 
                 Text("\(item.scrobbles) plays")
                     .subheaderStyle()
-            }.padding(.bottom, 2.5)
+            }.padding(.bottom, 2.5).shadow(radius: 20)
         }
     }
 }

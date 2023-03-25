@@ -19,7 +19,7 @@ struct LFMRecentTracksResponse: Codable {
 // MARK: - Recenttracks
 struct RecentTracks: Codable {
     let tracks: [RecentTrack]
-    let attr: RecentTrackAttr
+    let attr: RecentTracksAttr
 
     enum CodingKeys: String, CodingKey {
         case tracks = "track"
