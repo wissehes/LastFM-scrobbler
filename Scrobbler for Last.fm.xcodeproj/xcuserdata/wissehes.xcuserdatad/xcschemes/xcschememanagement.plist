@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>WidgetsExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>897A366F298A65AB0020AA80</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89CBA0F929BF47A100A75743</key>
 		<dict>
 			<key>primary</key>
 			<true/>

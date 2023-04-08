@@ -8,22 +8,38 @@
 import Foundation
 import Alamofire
 import CryptoKit
+import Cocoa
+import SwiftUI
+
+enum LastfmError: Error {
+    case unAuthorized
+}
+
+extension LastfmError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .unAuthorized:
+            return "Unauthorized!"
+        }
+    }
+}
 
 final class LastfmAPI {
     static var API_KEY: String {
         guard let key = Bundle.main.infoDictionary?["LASTFM_KEY"] as? String else {
-            fatalError("No Last.fm token")
+//            fatalError("No Last.fm token")
+            return ""
         }
         return key
     }
     static var API_SECRET: String {
         guard let key = Bundle.main.infoDictionary?["LASTFM_SECRET"] as? String else {
-            fatalError("No Last.fm secret")
+//            fatalError("No Last.fm secret")
+            return ""
         }
         return key
     }
     
-    static let username = "wissehes"
     static let BASE = "https://ws.audioscrobbler.com/2.0/"
     
     static let auth = AuthAPI()
@@ -84,7 +100,9 @@ final class LastfmAPI {
     }
     
     static func getLovedTracks() async throws -> LovedTracks {
-        var params = getParams(user: username, method: .getLovedTracks)
+        guard case let .authorized(session) = AuthController.shared.state else { throw LastfmError.unAuthorized }
+        
+        var params = getParams(user: session.name, method: .getLovedTracks)
         params["limit"] = 300
         
         let result = try await AF.request(BASE, parameters: params)
@@ -94,7 +112,8 @@ final class LastfmAPI {
     }
     
     static func getRecentTracks() async throws -> RecentTracks {
-        let params = getParams(user: username, method: .recentTracks)
+        guard case let .authorized(session) = AuthController.shared.state else { throw LastfmError.unAuthorized }
+        let params = getParams(user: session.name, method: .recentTracks)
         
         let result = try await AF.request(BASE, parameters: params)
             .serializingDecodable(LFMRecentTracksResponse.self)
@@ -103,7 +122,8 @@ final class LastfmAPI {
     }
     
     static func getTopTracks(period: Period = .overall) async throws -> TopTracks {
-        let params = self.getParams(user: username, method: .topTracks, period: period)
+        guard case let .authorized(session) = AuthController.shared.state else { throw LastfmError.unAuthorized }
+        let params = self.getParams(user: session.name, method: .topTracks, period: period)
         
         let result = try await AF.request(BASE, parameters: params)
             .serializingDecodable(LFMTopTracksResponse.self)
@@ -113,7 +133,8 @@ final class LastfmAPI {
     }
     
     static func getTopAlbums(period: Period = .overall) async throws -> TopAlbums {
-        let params = self.getParams(user: username, method: .topAlbums, period: period)
+        guard case let .authorized(session) = AuthController.shared.state else { throw LastfmError.unAuthorized }
+        let params = self.getParams(user: session.name, method: .topAlbums, period: period)
         
         let result = try await AF.request(BASE, parameters: params)
             .serializingDecodable(LFMTopAlbumsResponse.self)
@@ -123,10 +144,12 @@ final class LastfmAPI {
     }
     
     static func getTopArtists(period: Period = .overall) async throws -> TopArtists {
+        guard case let .authorized(session) = AuthController.shared.state else { throw LastfmError.unAuthorized }
+
         let params: Parameters = [
             "method": "user.getTopArtists",
             "format": "json",
-            "user": username,
+            "user": session.name,
             "period": period.rawValue,
             "api_key": API_KEY
         ]
@@ -149,6 +172,16 @@ final class LastfmAPI {
             .value
         
         return result.artist
+    }
+    
+    static func loadImage(_ url: URL) async throws -> Image? {
+        let data = try await AF.request(url)
+            .serializingData()
+            .value
+        
+        guard let image = NSImage(data: data) else { return nil }
+        
+        return Image(nsImage: image)
     }
 }
 
@@ -222,25 +255,6 @@ enum Period: String, CaseIterable {
     case halfyear = "6month"
     case year = "12month"
     case overall = "overall"
-}
-
-extension Period {
-    var name: String {
-        switch self {
-        case .week:
-            return "Last 7 days"
-        case .month:
-            return "Last 30 days"
-        case .quarter:
-            return "Last 90 days"
-        case .halfyear:
-            return "Last 180 days"
-        case .year:
-            return "Last 365 days"
-        case .overall:
-            return "All time"
-        }
-    }
 }
 
 enum Method: String {

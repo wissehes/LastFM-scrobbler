@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890FE85329C30ED2001FA70C /* TopArtistsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */; };
+		890FE85B29C31C39001FA70C /* MediumGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85A29C31C39001FA70C /* MediumGridWidget.swift */; };
+		890FE85D29C31C41001FA70C /* LargeGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890FE85C29C31C41001FA70C /* LargeGridWidget.swift */; };
+		8923A6FD29C8D635006B6381 /* RecentTracksWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */; };
 		8948995629B8B6A400D0EE2B /* LongProgessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995529B8B6A400D0EE2B /* LongProgessView.swift */; };
 		8948995829B8C00700D0EE2B /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8948995729B8C00700D0EE2B /* Pill.swift */; };
+		8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
+		8969CA0E29C21699001A6865 /* Period+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969CA0D29C21699001A6865 /* Period+Text.swift */; };
+		8969CA0F29C2170F001A6865 /* Period+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8969CA0D29C21699001A6865 /* Period+Text.swift */; };
+		8978C0BA29BF85EE00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0B929BF85EE00E1F4B0 /* Alamofire */; };
+		8978C0BC29BF868F00E1F4B0 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BB29BF868F00E1F4B0 /* SpotifyAPI */; };
+		8978C0BE29BF868F00E1F4B0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8978C0BD29BF868F00E1F4B0 /* Alamofire */; };
 		897A3674298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A3673298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift */; };
 		897A3676298A65AB0020AA80 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A3675298A65AB0020AA80 /* ContentView.swift */; };
 		897A3678298A65AB0020AA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 897A3677298A65AB0020AA80 /* Assets.xcassets */; };
 		897A367B298A65AB0020AA80 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 897A367A298A65AB0020AA80 /* Preview Assets.xcassets */; };
 		897A3684298A662C0020AA80 /* LastfmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A3683298A662C0020AA80 /* LastfmAPI.swift */; };
-		897A3687298A66850020AA80 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 897A3686298A66850020AA80 /* Alamofire */; };
 		897A368C298A69AC0020AA80 /* TopArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A368B298A69AC0020AA80 /* TopArtistsView.swift */; };
 		897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A368E298A6A7E0020AA80 /* TopArtistsResponse.swift */; };
-		898A6A3029B78B3F00EC2C12 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */; };
 		898A6A3229B78BBE00EC2C12 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3129B78BBE00EC2C12 /* Spotify.swift */; };
 		898A6A3529B78E7400EC2C12 /* SearchAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3429B78E7400EC2C12 /* SearchAlbumView.swift */; };
 		898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3829B797DA00EC2C12 /* SpotifyAlbumView.swift */; };
@@ -47,15 +55,71 @@
 		89C837F3298C4882007E3062 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837F2298C4882007E3062 /* LoginView.swift */; };
 		89C837F6298D7415007E3062 /* ArtistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837F5298D7415007E3062 /* ArtistDetailView.swift */; };
 		89C837F8298D8FD1007E3062 /* ArtistInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837F7298D8FD1007E3062 /* ArtistInfoResponse.swift */; };
+		89CBA0FD29BF47A100A75743 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CBA0FC29BF47A100A75743 /* WidgetKit.framework */; };
+		89CBA0FF29BF47A100A75743 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CBA0FE29BF47A100A75743 /* SwiftUI.framework */; };
+		89CBA10229BF47A100A75743 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10129BF47A100A75743 /* Widgets.swift */; };
+		89CBA10529BF47A300A75743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89CBA10429BF47A300A75743 /* Assets.xcassets */; };
+		89CBA10829BF47A300A75743 /* Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA10329BF47A100A75743 /* Widgets.intentdefinition */; };
+		89CBA11429BF4B7400A75743 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837EA298C3BA2007E3062 /* AuthController.swift */; };
+		89CBA11529BF4B7900A75743 /* LastfmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A3683298A662C0020AA80 /* LastfmAPI.swift */; };
+		89CBA11629BF4BA500A75743 /* GetTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837ED298C4124007E3062 /* GetTokenResponse.swift */; };
+		89CBA11729BF4BA500A75743 /* TopAlbumsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8D1298B09AE00AAFE7A /* TopAlbumsResponse.swift */; };
+		89CBA11829BF4BA500A75743 /* GetSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837EF298C43AF007E3062 /* GetSessionResponse.swift */; };
+		89CBA11929BF4BA500A75743 /* TopArtistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A368E298A6A7E0020AA80 /* TopArtistsResponse.swift */; };
+		89CBA11A29BF4BA500A75743 /* RecentTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837E3298BB5F9007E3062 /* RecentTracksResponse.swift */; };
+		89CBA11B29BF4BA500A75743 /* ArtistInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837F7298D8FD1007E3062 /* ArtistInfoResponse.swift */; };
+		89CBA11C29BF4BA500A75743 /* LovedTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837E6298C21A6007E3062 /* LovedTracksResponse.swift */; };
+		89CBA11D29BF4BA500A75743 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8D3298B09D900AAFE7A /* Shared.swift */; };
+		89CBA11E29BF4BA500A75743 /* CollageImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FCA0D29BCB6550051C13E /* CollageImage.swift */; };
+		89CBA11F29BF4BA500A75743 /* TopTracksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C837DB298BA637007E3062 /* TopTracksResponse.swift */; };
+		89CBA12129BF825300A75743 /* TopAlbumsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA11229BF49F000A75743 /* TopAlbumsWidget.swift */; };
+		89CBA12229BF833A00A75743 /* ScrobblingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A6A3A29B7A6C800EC2C12 /* ScrobblingAPI.swift */; };
+		89CBA12629BF83A900A75743 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 89CBA12529BF83A900A75743 /* SpotifyAPI */; };
+		89CBA12829BF83D400A75743 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA12729BF83D400A75743 /* Sequence+Async.swift */; };
+		89CBA12929BF83D400A75743 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBA12729BF83D400A75743 /* Sequence+Async.swift */; };
+		89DF12D429C3DB1700A2570F /* WidgetStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF12D329C3DB1700A2570F /* WidgetStuff.swift */; };
+		89DF12D729C4581500A2570F /* Text+PillBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF12D629C4581500A2570F /* Text+PillBackground.swift */; };
+		89DF12D829C4587800A2570F /* Text+PillBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF12D629C4581500A2570F /* Text+PillBackground.swift */; };
+		89DF12DB29C45FA100A2570F /* SmallGridWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF12D929C45F7D00A2570F /* SmallGridWidget.swift */; };
 		89EBB8D0298B086F00AAFE7A /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8CF298B086F00AAFE7A /* Rank.swift */; };
 		89EBB8D2298B09AE00AAFE7A /* TopAlbumsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8D1298B09AE00AAFE7A /* TopAlbumsResponse.swift */; };
 		89EBB8D4298B09D900AAFE7A /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8D3298B09D900AAFE7A /* Shared.swift */; };
 		89EBB8D6298B0AD800AAFE7A /* TopAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EBB8D5298B0AD800AAFE7A /* TopAlbumsView.swift */; };
+		89FE44D929C103FF00FF823B /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 89CBA0FA29BF47A100A75743 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		89FE44DA29C1040000FF823B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 897A3668298A65AB0020AA80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89CBA0F929BF47A100A75743;
+			remoteInfo = WidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		89FE44DC29C1040000FF823B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				89FE44D929C103FF00FF823B /* WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsWidget.swift; sourceTree = "<group>"; };
+		890FE85A29C31C39001FA70C /* MediumGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumGridWidget.swift; sourceTree = "<group>"; };
+		890FE85C29C31C41001FA70C /* LargeGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeGridWidget.swift; sourceTree = "<group>"; };
+		8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTracksWidget.swift; sourceTree = "<group>"; };
 		8948995529B8B6A400D0EE2B /* LongProgessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongProgessView.swift; sourceTree = "<group>"; };
 		8948995729B8C00700D0EE2B /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
+		8969CA0D29C21699001A6865 /* Period+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Period+Text.swift"; sourceTree = "<group>"; };
 		897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scrobbler for Last.fm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		897A3673298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrobbler_for_Last_fmApp.swift; sourceTree = "<group>"; };
 		897A3675298A65AB0020AA80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +158,19 @@
 		89C837F2298C4882007E3062 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		89C837F5298D7415007E3062 /* ArtistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailView.swift; sourceTree = "<group>"; };
 		89C837F7298D8FD1007E3062 /* ArtistInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoResponse.swift; sourceTree = "<group>"; };
+		89CBA0FA29BF47A100A75743 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		89CBA0FC29BF47A100A75743 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		89CBA0FE29BF47A100A75743 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		89CBA10129BF47A100A75743 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		89CBA10329BF47A100A75743 /* Widgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widgets.intentdefinition; sourceTree = "<group>"; };
+		89CBA10429BF47A300A75743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89CBA10629BF47A300A75743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CBA10729BF47A300A75743 /* Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgets.entitlements; sourceTree = "<group>"; };
+		89CBA11229BF49F000A75743 /* TopAlbumsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsWidget.swift; sourceTree = "<group>"; };
+		89CBA12729BF83D400A75743 /* Sequence+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Async.swift"; sourceTree = "<group>"; };
+		89DF12D329C3DB1700A2570F /* WidgetStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetStuff.swift; sourceTree = "<group>"; };
+		89DF12D629C4581500A2570F /* Text+PillBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+PillBackground.swift"; sourceTree = "<group>"; };
+		89DF12D929C45F7D00A2570F /* SmallGridWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallGridWidget.swift; sourceTree = "<group>"; };
 		89EBB8CF298B086F00AAFE7A /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		89EBB8D1298B09AE00AAFE7A /* TopAlbumsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsResponse.swift; sourceTree = "<group>"; };
 		89EBB8D3298B09D900AAFE7A /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -106,19 +183,60 @@
 			buildActionMask = 2147483647;
 			files = (
 				898A6A3E29B7E54700EC2C12 /* AlertToast in Frameworks */,
-				898A6A3029B78B3F00EC2C12 /* SpotifyAPI in Frameworks */,
-				897A3687298A66850020AA80 /* Alamofire in Frameworks */,
+				8978C0BA29BF85EE00E1F4B0 /* Alamofire in Frameworks */,
+				89CBA12629BF83A900A75743 /* SpotifyAPI in Frameworks */,
 				89B4814229BBE3D100319778 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89CBA0F729BF47A100A75743 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89CBA0FF29BF47A100A75743 /* SwiftUI.framework in Frameworks */,
+				8978C0BE29BF868F00E1F4B0 /* Alamofire in Frameworks */,
+				8978C0BC29BF868F00E1F4B0 /* SpotifyAPI in Frameworks */,
+				89CBA0FD29BF47A100A75743 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		890FE84F29C30ACC001FA70C /* TopArtistsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				890FE85129C30ECF001FA70C /* TopArtistsWidget.swift */,
+			);
+			path = TopArtistsWidget;
+			sourceTree = "<group>";
+		};
+		890FE85929C31C30001FA70C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				890FE85A29C31C39001FA70C /* MediumGridWidget.swift */,
+				890FE85C29C31C41001FA70C /* LargeGridWidget.swift */,
+				89DF12D929C45F7D00A2570F /* SmallGridWidget.swift */,
+				89DF12D329C3DB1700A2570F /* WidgetStuff.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		8923A6FC29C8D61B006B6381 /* RecentTracksWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8923A6FB29C8D617006B6381 /* RecentTracksWidget.swift */,
+			);
+			path = RecentTracksWidget;
+			sourceTree = "<group>";
+		};
 		897A3667298A65AB0020AA80 = {
 			isa = PBXGroup;
 			children = (
 				897A3672298A65AB0020AA80 /* Scrobbler for Last.fm */,
+				89CBA10029BF47A100A75743 /* Widgets */,
+				89DF12D529C4580000A2570F /* Shared */,
+				89CBA0FB29BF47A100A75743 /* Frameworks */,
 				897A3671298A65AB0020AA80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */,
+				89CBA0FA29BF47A100A75743 /* WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,6 +397,47 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
+		89CBA0FB29BF47A100A75743 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89CBA0FC29BF47A100A75743 /* WidgetKit.framework */,
+				89CBA0FE29BF47A100A75743 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89CBA10029BF47A100A75743 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				8923A6FC29C8D61B006B6381 /* RecentTracksWidget */,
+				890FE85929C31C30001FA70C /* Shared */,
+				890FE84F29C30ACC001FA70C /* TopArtistsWidget */,
+				89CBA11129BF49E000A75743 /* TopAlbumsWidget */,
+				89CBA10129BF47A100A75743 /* Widgets.swift */,
+				89CBA10329BF47A100A75743 /* Widgets.intentdefinition */,
+				89CBA10429BF47A300A75743 /* Assets.xcassets */,
+				89CBA10629BF47A300A75743 /* Info.plist */,
+				89CBA10729BF47A300A75743 /* Widgets.entitlements */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		89CBA11129BF49E000A75743 /* TopAlbumsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				89CBA11229BF49F000A75743 /* TopAlbumsWidget.swift */,
+			);
+			path = TopAlbumsWidget;
+			sourceTree = "<group>";
+		};
+		89DF12D529C4580000A2570F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				89DF12D629C4581500A2570F /* Text+PillBackground.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		89EBB8CE298B085700AAFE7A /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +449,8 @@
 				899D9A0829B9167800D6EFB0 /* LoadingOverlay.swift */,
 				899D9A0A29B916F200D6EFB0 /* SwiftUI+Loading.swift */,
 				8990661129BBED29009D3CB5 /* SwiftUI+Pointer.swift */,
+				89CBA12729BF83D400A75743 /* Sequence+Async.swift */,
+				8969CA0D29C21699001A6865 /* Period+Text.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -303,21 +465,44 @@
 				897A366C298A65AB0020AA80 /* Sources */,
 				897A366D298A65AB0020AA80 /* Frameworks */,
 				897A366E298A65AB0020AA80 /* Resources */,
+				89FE44DC29C1040000FF823B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89FE44DB29C1040000FF823B /* PBXTargetDependency */,
+			);
+			name = "Scrobbler for Last.fm";
+			packageProductDependencies = (
+				898A6A3D29B7E54700EC2C12 /* AlertToast */,
+				89B4814129BBE3D100319778 /* Lottie */,
+				89CBA12529BF83A900A75743 /* SpotifyAPI */,
+				8978C0B929BF85EE00E1F4B0 /* Alamofire */,
+			);
+			productName = "Scrobbler for Last.fm";
+			productReference = 897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89CBA0F929BF47A100A75743 /* WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89CBA10D29BF47A300A75743 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */;
+			buildPhases = (
+				89CBA0F629BF47A100A75743 /* Sources */,
+				89CBA0F729BF47A100A75743 /* Frameworks */,
+				89CBA0F829BF47A100A75743 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Scrobbler for Last.fm";
+			name = WidgetsExtension;
 			packageProductDependencies = (
-				897A3686298A66850020AA80 /* Alamofire */,
-				898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */,
-				898A6A3D29B7E54700EC2C12 /* AlertToast */,
-				89B4814129BBE3D100319778 /* Lottie */,
+				8978C0BB29BF868F00E1F4B0 /* SpotifyAPI */,
+				8978C0BD29BF868F00E1F4B0 /* Alamofire */,
 			);
-			productName = "Scrobbler for Last.fm";
-			productReference = 897A3670298A65AB0020AA80 /* Scrobbler for Last.fm.app */;
-			productType = "com.apple.product-type.application";
+			productName = WidgetsExtension;
+			productReference = 89CBA0FA29BF47A100A75743 /* WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -332,6 +517,9 @@
 					897A366F298A65AB0020AA80 = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					89CBA0F929BF47A100A75743 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 				};
 			};
 			buildConfigurationList = 897A366B298A65AB0020AA80 /* Build configuration list for PBXProject "Scrobbler for Last.fm" */;
@@ -344,16 +532,17 @@
 			);
 			mainGroup = 897A3667298A65AB0020AA80;
 			packageReferences = (
-				897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 				898A6A3C29B7E54600EC2C12 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				89B4814029BBE3D000319778 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				89CBA12429BF83A900A75743 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				8978C0B829BF85EE00E1F4B0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 897A3671298A65AB0020AA80 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				897A366F298A65AB0020AA80 /* Scrobbler for Last.fm */,
+				89CBA0F929BF47A100A75743 /* WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -370,6 +559,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		89CBA0F829BF47A100A75743 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89CBA10529BF47A300A75743 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -378,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89B4814929BBE62D00319778 /* NowPlayingIcon.swift in Sources */,
+				89CBA12829BF83D400A75743 /* Sequence+Async.swift in Sources */,
 				89C837DC298BA637007E3062 /* TopTracksResponse.swift in Sources */,
 				89C837F8298D8FD1007E3062 /* ArtistInfoResponse.swift in Sources */,
 				89C837E4298BB5F9007E3062 /* RecentTracksResponse.swift in Sources */,
@@ -389,6 +587,7 @@
 				899FCA0729BCAB200051C13E /* CollageView.swift in Sources */,
 				89EBB8D6298B0AD800AAFE7A /* TopAlbumsView.swift in Sources */,
 				89C837F0298C43AF007E3062 /* GetSessionResponse.swift in Sources */,
+				89DF12D729C4581500A2570F /* Text+PillBackground.swift in Sources */,
 				897A3676298A65AB0020AA80 /* ContentView.swift in Sources */,
 				89C837E0298BAC0F007E3062 /* ExternalImage.swift in Sources */,
 				897A3674298A65AB0020AA80 /* Scrobbler_for_Last_fmApp.swift in Sources */,
@@ -410,13 +609,55 @@
 				899D9A0929B9167800D6EFB0 /* LoadingOverlay.swift in Sources */,
 				89EBB8D4298B09D900AAFE7A /* Shared.swift in Sources */,
 				898A6A3929B797DA00EC2C12 /* SpotifyAlbumView.swift in Sources */,
+				8969CA0E29C21699001A6865 /* Period+Text.swift in Sources */,
 				89C837F3298C4882007E3062 /* LoginView.swift in Sources */,
 				8948995829B8C00700D0EE2B /* Pill.swift in Sources */,
+				8969C9E929C1EC86001A6865 /* Widgets.intentdefinition in Sources */,
 				897A368F298A6A7E0020AA80 /* TopArtistsResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		89CBA0F629BF47A100A75743 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89CBA11629BF4BA500A75743 /* GetTokenResponse.swift in Sources */,
+				89DF12DB29C45FA100A2570F /* SmallGridWidget.swift in Sources */,
+				89CBA11C29BF4BA500A75743 /* LovedTracksResponse.swift in Sources */,
+				89CBA10829BF47A300A75743 /* Widgets.intentdefinition in Sources */,
+				89CBA11429BF4B7400A75743 /* AuthController.swift in Sources */,
+				89CBA10229BF47A100A75743 /* Widgets.swift in Sources */,
+				89CBA11E29BF4BA500A75743 /* CollageImage.swift in Sources */,
+				89DF12D829C4587800A2570F /* Text+PillBackground.swift in Sources */,
+				89DF12D429C3DB1700A2570F /* WidgetStuff.swift in Sources */,
+				89CBA12929BF83D400A75743 /* Sequence+Async.swift in Sources */,
+				8969CA0F29C2170F001A6865 /* Period+Text.swift in Sources */,
+				89CBA11F29BF4BA500A75743 /* TopTracksResponse.swift in Sources */,
+				8923A6FD29C8D635006B6381 /* RecentTracksWidget.swift in Sources */,
+				89CBA11A29BF4BA500A75743 /* RecentTracksResponse.swift in Sources */,
+				89CBA11D29BF4BA500A75743 /* Shared.swift in Sources */,
+				89CBA11B29BF4BA500A75743 /* ArtistInfoResponse.swift in Sources */,
+				89CBA12129BF825300A75743 /* TopAlbumsWidget.swift in Sources */,
+				890FE85329C30ED2001FA70C /* TopArtistsWidget.swift in Sources */,
+				89CBA11729BF4BA500A75743 /* TopAlbumsResponse.swift in Sources */,
+				89CBA11529BF4B7900A75743 /* LastfmAPI.swift in Sources */,
+				890FE85D29C31C41001FA70C /* LargeGridWidget.swift in Sources */,
+				89CBA12229BF833A00A75743 /* ScrobblingAPI.swift in Sources */,
+				89CBA11829BF4BA500A75743 /* GetSessionResponse.swift in Sources */,
+				890FE85B29C31C39001FA70C /* MediumGridWidget.swift in Sources */,
+				89CBA11929BF4BA500A75743 /* TopArtistsResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89FE44DB29C1040000FF823B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89CBA0F929BF47A100A75743 /* WidgetsExtension */;
+			targetProxy = 89FE44DA29C1040000FF823B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		897A367D298A65AB0020AA80 /* Debug */ = {
@@ -542,7 +783,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Scrobbler for Last.fm/Scrobbler_for_Last_fm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrobbler for Last.fm/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -556,7 +797,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -572,7 +813,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Scrobbler for Last.fm/Scrobbler_for_Last_fm.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrobbler for Last.fm/Preview Content\"";
 				DEVELOPMENT_TEAM = C4HKS39B24;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -586,9 +827,69 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		89CBA10E29BF47A300A75743 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = Widgets/Widgets.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = C4HKS39B24;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		89CBA10F29BF47A300A75743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = Widgets/Widgets.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = C4HKS39B24;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.wissehes.Scrobbler-for-Last-fm.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -615,23 +916,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		89CBA10D29BF47A300A75743 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89CBA10E29BF47A300A75743 /* Debug */,
+				89CBA10F29BF47A300A75743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		8978C0B829BF85EE00E1F4B0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
-			};
-		};
-		898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI#installation";
-			requirement = {
-				kind = exactVersion;
-				version = 2.2.2;
 			};
 		};
 		898A6A3C29B7E54600EC2C12 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
@@ -650,18 +952,31 @@
 				version = 4.1.3;
 			};
 		};
+		89CBA12429BF83A900A75743 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		897A3686298A66850020AA80 /* Alamofire */ = {
+		8978C0B929BF85EE00E1F4B0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 897A3685298A66850020AA80 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 8978C0B829BF85EE00E1F4B0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		898A6A2F29B78B3F00EC2C12 /* SpotifyAPI */ = {
+		8978C0BB29BF868F00E1F4B0 /* SpotifyAPI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 898A6A2E29B78B3E00EC2C12 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
+			package = 89CBA12429BF83A900A75743 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
 			productName = SpotifyAPI;
+		};
+		8978C0BD29BF868F00E1F4B0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8978C0B829BF85EE00E1F4B0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		898A6A3D29B7E54700EC2C12 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -672,6 +987,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89B4814029BBE3D000319778 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		89CBA12529BF83A900A75743 /* SpotifyAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89CBA12429BF83A900A75743 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
+			productName = SpotifyAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

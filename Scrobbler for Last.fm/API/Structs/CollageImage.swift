@@ -13,10 +13,12 @@ struct CollageImage {
     let scrobbles: Int
     var image: Image = Image(systemName: "opticaldisc.fill")
     
-    init(albumName: String, scrobbles: Int, image: Image) {
+    init(albumName: String, scrobbles: Int, image: Image? = nil) {
         self.title = albumName
         self.scrobbles = scrobbles
-        self.image = image
+        if let image = image {
+            self.image = image
+        }
     }
     
     init(_ from: Album) {
@@ -27,5 +29,16 @@ struct CollageImage {
     init(_ from: TopArtist) {
         self.title = from.name
         self.scrobbles = from.playcountInt ?? 0
+    }
+}
+
+extension Array where Element == CollageImage {
+    static var examples: [CollageImage] {
+        var array: [CollageImage] = []
+        
+        for i in 1...9 {
+            array.append(.init(albumName: "Album \(i)", scrobbles: 1000 - i * 100))
+        }
+        return array
     }
 }
